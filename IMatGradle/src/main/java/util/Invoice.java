@@ -6,23 +6,23 @@ import java.util.Date;
 
 public class Invoice implements PaymentMethod {
     private Date date;
-    private Customer customer;
+    private String ssn;
 
-    public Invoice(Customer customer) {
+    public Invoice(String ssn) {
         date = new Date(new Date().getTime()/1000 + 3600*24*30);
-        this.customer = customer;
+        this.ssn = ssn;
     }
 
     public Date getDate() {
         return new Date(date.getTime());
     }
 
-    public Customer getCustomer() {
-        return customer;
+    public String getSsn() {
+        return ssn;
     }
 
     @Override
     public boolean isValid() {
-        return customer != null && date != null;
+        return !ssn.isEmpty() && date != null;
     }
 }

@@ -8,9 +8,9 @@ import util.BillingInformation;
 
 import java.io.IOException;
 
-import static validators.BillingInformationFormValidator.*;
+import static validators.FormValidators.*;
 
-public class BillingPane extends AnchorPane {
+public class BillingPane extends AnchorPane implements Extractable<BillingInformation> {
 
     @FXML
     private TextField emailTextField, phoneTextField, ssnTextField, fnTextField, lnTextField, addressTextField, zipTextField;
@@ -75,7 +75,7 @@ public class BillingPane extends AnchorPane {
         }
     }
 
-    public boolean validateForm() {
+    private boolean validateForm() {
         validateNameTextField(fnTextField);
         validateNameTextField(lnTextField);
         validateNameTextField(addressTextField);
@@ -96,7 +96,10 @@ public class BillingPane extends AnchorPane {
         return ourInstance;
     }
 
-    public BillingInformation extractBillingInformation() {
-        return new BillingInformation(emailTextField.getText(), phoneTextField.getText(), ssnTextField.getText(), zipTextField.getText(), fnTextField.getText(), lnTextField.getText(), addressTextField.getText());
+    @Override
+    public BillingInformation extract() {
+        if(validateForm()) return new BillingInformation(emailTextField.getText(), phoneTextField.getText(), ssnTextField.getText(), zipTextField.getText(),
+                fnTextField.getText(), lnTextField.getText(), addressTextField.getText());
+        else return null;
     }
 }

@@ -10,17 +10,17 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<fx:root prefHeight="570" prefWidth="1000" styleClass="task" stylesheets="@/css/payment.css" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root prefHeight="570" prefWidth="1000" styleClass="task" stylesheets="@/css/task.css" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane layoutY="100.0" prefHeight="100.0" prefWidth="1000.0">
          <children>
-            <RadioButton layoutX="14.0" layoutY="41.0" mnemonicParsing="false" fx:id="cardRadioButton"/>
+            <RadioButton layoutX="14.0" layoutY="41.0" mnemonicParsing="false" fx:id="invoiceRadioButton"/>
             <StackPane layoutX="38.0" layoutY="12.5" prefHeight="75.0" prefWidth="75.0" style="-fx-border-color: black;">
                <children>
                   <ImageView fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" style="-fx-border-color: black;" />
                </children>
             </StackPane>
-            <TextField layoutX="150.0" layoutY="30.0" prefHeight="26.0" prefWidth="150.0" promptText="ÅÅÅÅ-MM-DD-XXXX" />
+            <TextField fx:id="ssnTextField" layoutX="150.0" layoutY="30.0" prefHeight="26.0" prefWidth="150.0" promptText="ÅÅÅÅ-MM-DD-XXXX" />
             <Label layoutX="150.0" layoutY="10.0" text="Personnummer">
                <font>
                   <Font size="16.0" />
@@ -28,28 +28,28 @@
             </Label>
          </children>
       </AnchorPane>
-      <AnchorPane prefHeight="100.0" prefWidth="1000.0" styleClass="selected" stylesheets="@/css/payment.css">
+      <AnchorPane prefHeight="100.0" prefWidth="1000.0" styleClass="selected">
          <children>
-            <RadioButton layoutX="14.0" layoutY="41.0" mnemonicParsing="false" selected="true" fx:id="invoiceRadioButton"/>
+            <RadioButton layoutX="14.0" layoutY="41.0" mnemonicParsing="false" selected="true" fx:id="cardRadioButton"/>
             <StackPane layoutX="38.0" layoutY="12.5" prefHeight="75.0" prefWidth="75.0" style="-fx-border-color: black;">
                <children>
                   <ImageView fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" style="-fx-border-color: black;" />
                </children>
             </StackPane>
-            <ComboBox layoutX="150.0" layoutY="30.0" prefWidth="150.0" promptText="Kort Leverantör" />
-            <TextField layoutX="329.0" layoutY="30.0" promptText="XXXX XXXX XXXX XXXX" />
+            <ComboBox fx:id="cardDealerComboBox" layoutX="150.0" layoutY="30.0" prefWidth="150.0" promptText="Kort Leverantör"  />
+            <TextField fx:id="cardNumberTextField" layoutX="329.0" layoutY="30.0" promptText="XXXX XXXX XXXX XXXX" />
             <Label layoutX="329.0" layoutY="10.0" text="Kortnummer">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <TextField layoutX="516.0" layoutY="30.0" prefHeight="26.0" prefWidth="44.0" promptText="XXX" />
+            <TextField fx:id="cvcTextField" layoutX="516.0" layoutY="30.0" prefHeight="26.0" prefWidth="44.0" promptText="XXX" />
             <Label layoutX="516.0" layoutY="10.0" text="CVC">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <DatePicker layoutX="576.0" layoutY="30.0" prefHeight="26.0" prefWidth="141.0" />
+            <DatePicker fx:id="validDatePicker" layoutX="576.0" layoutY="30.0" prefHeight="26.0" prefWidth="141.0" />
             <Label layoutX="576.0" layoutY="10.0" text="Giltlighets Datum">
                <font>
                   <Font size="16.0" />

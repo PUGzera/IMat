@@ -68,7 +68,7 @@ public class ShoppingState implements Observable {
                     state = State.BILLING_INFORMATION;
                 break;
             case BILLING_INFORMATION:
-                if(billingInformation.isValid())
+            if(billingInformation != null && billingInformation.isValid())
                     state = State.PAYMENT_METHOD;
                 break;
             case PAYMENT_METHOD:

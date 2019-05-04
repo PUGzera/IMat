@@ -1,6 +1,6 @@
 package util;
 
-import static validators.BillingInformationFormValidator.*;
+import static validators.FormValidators.*;
 
 public class BillingInformation {
     private String email;

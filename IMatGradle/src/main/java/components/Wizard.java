@@ -72,13 +72,13 @@ public class Wizard extends AnchorPane implements Observer {
                 observable.nextState();
                 break;
             case BILLING_INFORMATION:
-                if(billingPane.validateForm()) {
-                    this.getChildren().remove(billingPane);
-                    observable.setBillingInformation(billingPane.extractBillingInformation());
-                    observable.nextState();
-                }
+                this.getChildren().remove(billingPane);
+                observable.setBillingInformation(billingPane.extract());
+                observable.nextState();
                 break;
             case PAYMENT_METHOD:
+                this.getChildren().remove(paymentPane);
+                observable.setPaymentMethod(paymentPane.extract());
                 observable.nextState();
                 break;
             case SHIPPING_METHOD:
