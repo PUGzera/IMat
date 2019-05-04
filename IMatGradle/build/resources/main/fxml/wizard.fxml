@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
+
+
+<fx:root prefHeight="645.0" prefWidth="1000.0" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane fx:id="progressHeader" prefHeight="75.0" prefWidth="1000.0" style="-fx-border-color: black; -fx-border-color-top: transparent">
+         <children>
+            <Line fx:id="progressOneLine" endX="150.0" layoutX="200.0" layoutY="38.0" />
+            <Line fx:id="progressTwoLine" endX="151.0" endY="1.0" layoutX="349.0" layoutY="37.0" startX="1.5" startY="1.0" />
+            <Line fx:id="progressThreeLine" endX="113.0" endY="-1.0" layoutX="537.0" layoutY="39.0" startX="-37.0" startY="-1.0" />
+            <Line fx:id="progressFourLine" endX="159.0" endY="1.0" layoutX="641.0" layoutY="37.0" startX="9.5" startY="1.0" />
+            <Circle fx:id="progressOneCircle" fill="#eeeeee" layoutX="200.0" layoutY="38.0" radius="10.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="progressTwoCircle" fill="#eeeeee" layoutX="350.0" layoutY="38.0" radius="10.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="progressThreeCircle" fill="#eeeeee" layoutX="500.0" layoutY="38.0" radius="10.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="progressFourCircle" fill="#eeeeee" layoutX="650.0" layoutY="38.0" radius="10.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="progressFiveCircle" fill="#eeeeee" layoutX="800.0" layoutY="38.0" radius="10.0" stroke="BLACK" strokeType="INSIDE" />
+            <Label fx:id="taskOneLabel" layoutX="182.0" layoutY="53.0" text="Kundvagn" />
+            <Label fx:id="taskTwoLabel" layoutX="332.0" layoutY="53.0" text="Dina uppgifter" />
+            <Label fx:id="taskThreeLabel" layoutX="483.0" layoutY="53.0" text="Betalningsmetod" />
+            <Label fx:id="taskFourLabel" layoutX="632.0" layoutY="53.0" text="Leveransmetod" />
+            <Label fx:id="taskFiveLabel" layoutX="782.0" layoutY="53.0" text="Bekräftelse" />
+            <Button layoutX="870.0" layoutY="25.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="95.0" text="Nästa Steg" fx:id="nextButton" />
+         </children>
+      </AnchorPane>
+   </children>
+</fx:root>
