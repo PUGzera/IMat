@@ -1,8 +1,8 @@
 # IMat
 <hr>
-<h1>Authentication: </h1><br/>
-<p>  ShoppingState: </p><br/>
-<p>    + boolean isAuthenticated() </p><br/>
-<p>    + void authenticate(String username, String password) </p><br/>
-<p>    + void unAuthenticate() </p><br/>
-<p>    + Optional<User> getAuthenticatedUser() </p><br/>
+<p>Authentication: </p><br/>
+<p>&nbsp;&nbsp;ShoppingState: </p><br/>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;+ boolean isAuthenticated() </p><br/>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;+ void authenticate(String username, String password) </p><br/>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;+ void unAuthenticate() </p><br/>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;+ Optional<User> getAuthenticatedUser() </p><br/>
