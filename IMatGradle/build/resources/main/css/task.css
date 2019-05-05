@@ -1,0 +1,12 @@
+.invalid {
+    -fx-border-color: red;
+}
+.task {
+    -fx-border-color: black;
+}
+
+.selected {
+    -fx-border-width: 2px;
+    -fx-border-color: black;
+    -fx-opacity: 0.8;
+}
