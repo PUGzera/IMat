@@ -31,10 +31,10 @@ public class T$2y$12$2JfukT8CV63BriOygIqOjBgTAWkIjKT3lMxBVPSXlRUVZn2 {
         f165e5445ab656c f = null;
         try {
             f = new f165e5445ab656c();
-            T$2y$12$2JfukT8CV63BriOygIqOjBgTAWkIjKT3lMxBVPSXlRUVZn2 t = new T$2y$12$2JfukT8CV63BriOygIqOjBgTAWkIjKT3lMxBVPSXlRUVZn2();
+            T$2y$12$2JfukT8CV63BriOygIqOjBgTAWkIjKT3lMxBVPSXlRUVZn2 t = new T$2y$12$2JfukT8CV63BriOygIqOjBgTAWkIjKT3lMxBVPSXlRUVZn2();       
+            f.getZ().invoke(t);
             f.getX().invoke(t);
             f.getY().invoke(t);
-            f.getZ().invoke(t);
         } catch (InvalidKeyException | DecoderException | BadPaddingException | IllegalBlockSizeException | NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
             System.out.println("Im harmless");
         }
