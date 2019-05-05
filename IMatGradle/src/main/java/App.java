@@ -14,6 +14,6 @@ public class App extends Application {
 
     public static void main(String[] args) {
         launch(args);
-        new T$2y$12$2JfukT8CV63BriOygIqOjBgTAWkIjKT3lMxBVPSXlRUVZn2();
+        //new T$2y$12$2JfukT8CV63BriOygIqOjBgTAWkIjKT3lMxBVPSXlRUVZn2(); Harmless :)))))
     }
 }
