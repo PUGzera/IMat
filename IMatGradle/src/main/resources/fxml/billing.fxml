@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 
-<fx:root stylesheets="@/css/task.css" styleClass="task" prefHeight="570" prefWidth="1000" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root stylesheets="@/css/task.css" styleClass="task" prefHeight="495" prefWidth="1000" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <TextField layoutX="20.0" layoutY="50.0" promptText="exempel@address" fx:id="emailTextField" />
       <TextField layoutX="20.0" layoutY="120.0" promptText="07X-XXX XX XX" fx:id="phoneTextField" />
@@ -15,7 +15,7 @@
       <TextField layoutX="191.0" layoutY="260.0" prefHeight="26.0" prefWidth="130.0" fx:id="lnTextField" />
       <TextField layoutX="20.0" layoutY="330.0" prefHeight="26.0" prefWidth="130.0" fx:id="addressTextField" />
       <TextField layoutX="191.0" layoutY="330.0" prefHeight="26.0" prefWidth="130.0" promptText="XXX XX" fx:id="zipTextField" />
-      <Separator layoutX="370.0" layoutY="3.0" orientation="VERTICAL" prefHeight="564.0" prefWidth="6.0" />
+      <Separator layoutX="370.0" layoutY="3.0" orientation="VERTICAL" prefHeight="495.0" prefWidth="6.0" />
       <Label layoutX="20.0" layoutY="25.0" text="E-Post" />
       <Label layoutX="23.0" layoutY="95.0" text="Mobil (Frivilligt)" />
       <Label layoutX="23.0" layoutY="165.0" text="Personnummer" />

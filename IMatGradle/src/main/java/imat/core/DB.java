@@ -2,8 +2,6 @@ package imat.core;
 
 import imat.entities.Product;
 import imat.entities.ProductRepo;
-import imat.user.User;
-import imat.user.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -23,17 +21,12 @@ public class DB implements ApplicationRunner {
     @Autowired
     private ProductRepo productRepo;
 
-    @Autowired
-    private UserRepo userRepo;
-
     @Override
     public void run(ApplicationArguments args) throws Exception {
         List<Product> productList = new ArrayList<>();
         Path path = Paths.get(getClass().getClassLoader().getResource("cache/products.txt").toURI());
         List<String> products = Files.readAllLines(path);
         products.forEach(s -> productRepo.save(parser(s)));
-        User user = new User("test@test.se", "12345678", "199910024040", "hej", "då", "0708545454", "test", "42249","test");
-        userRepo.save(user);
     }
 
     private Product parser(String string) {

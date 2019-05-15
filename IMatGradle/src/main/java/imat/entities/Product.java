@@ -1,9 +1,14 @@
 package imat.entities;
 
+import com.google.gson.Gson;
 import com.sun.istack.NotNull;
 import se.chalmers.cse.dat216.project.ProductCategory;
 
 import javax.persistence.*;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.Collections;
 
 @Entity
 public class Product {

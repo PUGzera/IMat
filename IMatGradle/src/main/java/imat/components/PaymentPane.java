@@ -4,11 +4,14 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
-import imat.util.CreditCard;
-import imat.util.Invoice;
-import imat.util.PaymentMethod;
+import imat.entities.CreditCard;
+import imat.entities.Invoice;
+import imat.entities.PaymentMethod;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.util.List;
+import java.util.Optional;
 
 import static imat.validators.FormValidators.*;
 
@@ -18,31 +21,52 @@ public class PaymentPane extends AnchorPane implements Extractable<PaymentMethod
     private RadioButton invoiceRadioButton, cardRadioButton;
 
     @FXML
-    private TextField ssnTextField, cardNumberTextField, cvcTextField;
+    private TextField cardNumberTextField, cvcTextField;
 
     @FXML
-    private DatePicker validDatePicker;
+    private ListView<PaymentItem> cardsListView;
 
     @FXML
     private ComboBox<CreditCard.CardType> cardDealerComboBox;
 
+    @FXML
+    private ComboBox<Integer> monthComboBox, yearComboBox;
+
     private ToggleGroup toggleGroup = new ToggleGroup();
 
-    private static PaymentPane ourInstance = new PaymentPane();
+    private static PaymentPane ourInstance = null;
 
     private FXMLLoader root;
 
-    private PaymentPane() {
+    private PaymentPane(List<CreditCard> cardList) {
         root = new FXMLLoader(getClass().getResource("/fxml/payment.fxml"));
         root.setRoot(this);
         root.setController(this);
         try {
             root.load();
             cardDealerComboBox.getItems().addAll(CreditCard.CardType.MASTER_CARD, CreditCard.CardType.VISA);
+            monthComboBox.getItems().addAll(1,2,3,4,5,6,7,8,9,10,11,12);
+            yearComboBox.getItems().addAll(LocalDate.now().getYear(), LocalDate.now().getYear() + 1, LocalDate.now().getYear() + 2
+            , LocalDate.now().getYear() + 3, LocalDate.now().getYear() + 4, LocalDate.now().getYear() + 5);
             invoiceRadioButton.setToggleGroup(toggleGroup);
             cardRadioButton.setToggleGroup(toggleGroup);
-            invoiceRadioButton.selectedProperty().addListener((observable, oldValue, newValue) -> onToggleChange());
-            cardRadioButton.selectedProperty().addListener((observable, oldValue, newValue) -> onToggleChange());
+            invoiceRadioButton.selectedProperty().addListener((observable, oldValue, newValue) -> {
+                cardsListView.setDisable(true);
+                onToggleChange();
+            });
+            cardRadioButton.selectedProperty().addListener((observable, oldValue, newValue) -> {
+                cardsListView.setDisable(false);
+                onToggleChange();
+            });
+            cardList.forEach(c -> cardsListView.getItems().add(new PaymentItem((CreditCard) c)));
+            cardsListView.getSelectionModel().selectedItemProperty().addListener((o, ov, nv) -> {
+                CreditCard creditCard = nv.getCreditCard();
+                cardNumberTextField.setText(creditCard.getCardNumber());
+                cvcTextField.setText(String.valueOf(creditCard.getVerificationCode()));
+                cardDealerComboBox.getSelectionModel().select(creditCard.getCardType());
+                monthComboBox.getSelectionModel().select(new Integer(creditCard.getValidMonth()));
+                yearComboBox.getSelectionModel().select(new Integer(creditCard.getValidYear()));
+            });
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -55,17 +79,9 @@ public class PaymentPane extends AnchorPane implements Extractable<PaymentMethod
         });
     }
 
-    public static PaymentPane getInstance() {
+    public static PaymentPane getInstance(List<CreditCard> creditCards) {
+        if (ourInstance == null) ourInstance = new PaymentPane(creditCards);
         return ourInstance;
-    }
-
-    private void validateSSNTextField() {
-        if(!validSSN(ssnTextField.getText().replace("-", ""))) {
-            ssnTextField.getStyleClass().add("invalid");
-        }
-        else {
-            ssnTextField.getStyleClass().remove("invalid");
-        }
     }
 
     private void validateCVCField() {
@@ -87,11 +103,14 @@ public class PaymentPane extends AnchorPane implements Extractable<PaymentMethod
     }
 
     private void validateCardDate() {
-        if(validDatePicker.getValue() != null && !validFutureDate(validDatePicker.getValue())) {
-            validDatePicker.getStyleClass().add("invalid");
+        if(monthComboBox.getValue() == null || yearComboBox.getValue() == null
+            || !validFutureDate(LocalDate.of(yearComboBox.getValue(), monthComboBox.getValue(), 1))) {
+            monthComboBox.getStyleClass().add("invalid");
+            yearComboBox.getStyleClass().add("invalid");
         }
         else {
-            validDatePicker.getStyleClass().remove("invalid");
+            monthComboBox.getStyleClass().remove("invalid");
+            yearComboBox.getStyleClass().remove("invalid");
         }
     }
 
@@ -104,24 +123,25 @@ public class PaymentPane extends AnchorPane implements Extractable<PaymentMethod
         }
     }
 
-    private boolean validateInvoiceForm() {
-        validateSSNTextField();
-        return validSSN(ssnTextField.getText());
-    }
-
     private boolean validateCardForm() {
         validateCardNumberField();
         validateCVCField();
         validateCardDate();
         validateCardDealerBox();
-        return validDatePicker.getValue() != null && validCVC(cvcTextField.getText()) && validCardNumber(cardNumberTextField.getText()) && validFutureDate(validDatePicker.getValue()) && cardDealerComboBox.getValue() != null;
+        return monthComboBox.getValue() != null
+                && yearComboBox.getValue() != null
+                && validCVC(cvcTextField.getText())
+                && validCardNumber(cardNumberTextField.getText().replace(" ", ""))
+                && validFutureDate(LocalDate.of(yearComboBox.getValue(), monthComboBox.getValue(), 1))
+                && cardDealerComboBox.getValue() != null;
     }
 
     @Override
-    public PaymentMethod extract() {
-        if(invoiceRadioButton.isSelected() && validateInvoiceForm()) return new Invoice(ssnTextField.getText());
-        else if (validateCardForm()) return new CreditCard(cardDealerComboBox.getValue(), "test", validDatePicker.getValue().getMonthValue(),
-                validDatePicker.getValue().getYear(), cardNumberTextField.getText(), Integer.valueOf(cvcTextField.getText()));
-        else return null;
+    public Optional<PaymentMethod> extract() {
+        System.out.println(validateCardForm());
+        if(invoiceRadioButton.isSelected()) return Optional.of(new Invoice());
+        else if (validateCardForm()) return Optional.of(new CreditCard(cardDealerComboBox.getValue(), "", monthComboBox.getValue(),
+                yearComboBox.getValue(), cardNumberTextField.getText(), Integer.valueOf(cvcTextField.getText())));
+        else return Optional.empty();
     }
 }

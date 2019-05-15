@@ -6,6 +6,6 @@ public interface Observer {
 
     void unsubscribe();
 
-    void update(Observable observable);
+    void update();
 
 }

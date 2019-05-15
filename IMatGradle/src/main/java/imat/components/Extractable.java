@@ -1,7 +1,9 @@
 package imat.components;
 
+import java.util.Optional;
+
 public interface Extractable<T> {
 
-    T extract();
+    Optional<T> extract();
 
 }

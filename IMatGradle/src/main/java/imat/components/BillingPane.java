@@ -4,9 +4,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import imat.util.BillingInformation;
+import imat.entities.BillingInformation;
 
 import java.io.IOException;
+import java.util.Optional;
 
 import static imat.validators.FormValidators.*;
 
@@ -19,30 +20,13 @@ public class BillingPane extends AnchorPane implements Extractable<BillingInform
 
     private FXMLLoader root;
 
-    private BillingPane() {
-        root = new FXMLLoader(getClass().getResource("/fxml/billing.fxml"));
-        root.setRoot(this);
-        root.setController(this);
-        try {
-            root.load();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
     private BillingPane(BillingInformation billingInformation) {
         root = new FXMLLoader(getClass().getResource("/fxml/billing.fxml"));
         root.setRoot(this);
         root.setController(this);
         try {
             root.load();
-            emailTextField.setText(billingInformation.getEmail());
-            phoneTextField.setText(billingInformation.getPhone());
-            ssnTextField.setText(billingInformation.getSsn());
-            fnTextField.setText(billingInformation.getFirstName());
-            lnTextField.setText(billingInformation.getLastName());
-            addressTextField.setText(billingInformation.getAddress());
-            zipTextField.setText(billingInformation.getZip());
+            updateBillingFields(billingInformation);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -110,20 +94,25 @@ public class BillingPane extends AnchorPane implements Extractable<BillingInform
                 validEmail(emailTextField.getText());
     }
 
-    public static BillingPane getInstance() {
-        if (ourInstance == null) ourInstance = new BillingPane();
-        return ourInstance;
-    }
-
     public static BillingPane getInstance(BillingInformation billingInformation) {
         if (ourInstance == null) ourInstance = new BillingPane(billingInformation);
         return ourInstance;
     }
 
     @Override
-    public BillingInformation extract() {
-        if(validateForm()) return new BillingInformation(emailTextField.getText(), phoneTextField.getText(), ssnTextField.getText(), zipTextField.getText(),
-                fnTextField.getText(), lnTextField.getText(), addressTextField.getText());
-        else return null;
+    public Optional<BillingInformation> extract() {
+        if(validateForm()) return Optional.of(new BillingInformation(emailTextField.getText(), phoneTextField.getText(), ssnTextField.getText(), zipTextField.getText(),
+                fnTextField.getText(), lnTextField.getText(), addressTextField.getText()));
+        else return Optional.empty();
+    }
+
+    public void updateBillingFields(BillingInformation billingInformation) {
+        emailTextField.setText(billingInformation.getEmail());
+        phoneTextField.setText(billingInformation.getPhone());
+        ssnTextField.setText(billingInformation.getSsn());
+        fnTextField.setText(billingInformation.getFirstName());
+        lnTextField.setText(billingInformation.getLastName());
+        addressTextField.setText(billingInformation.getAddress());
+        zipTextField.setText(billingInformation.getZip());
     }
 }

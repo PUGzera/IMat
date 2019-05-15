@@ -10,3 +10,7 @@
     -fx-border-color: black;
     -fx-opacity: 0.8;
 }
+
+.invalid-1 {
+    -fx-background-color: red;
+}
