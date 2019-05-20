@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+
+<fx:root prefHeight="75.0" prefWidth="1280.0" styleClass="header" stylesheets="@/css/header.css" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+    <Label>Test</Label>
+   <HBox fx:id="loginHBox" layoutX="814.0" layoutY="14.0" prefHeight="27.0" prefWidth="452.0" spacing="20.0">
+      <children>
+         <TextField fx:id="emailLoginTextField" promptText="exempel@exempel.se" />
+         <PasswordField fx:id="passwordLoginTextField" promptText="Lösenord" />
+         <Button fx:id="loginButton" mnemonicParsing="false" text="Logga In" />
+      </children>
+   </HBox>
+</fx:root>

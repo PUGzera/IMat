@@ -1,0 +1,6 @@
+.invalid {
+    -fx-border-color: red;
+}
+.task {
+    -fx-border-color: black;
+}
