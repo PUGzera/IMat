@@ -22,7 +22,7 @@
          <top>
             <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="184.0" prefWidth="1500.0" style="-fx-background-color: #DDDDDD;" BorderPane.alignment="CENTER">
                <children>
-                  <ImageView onMouseClicked="#goHome" fitHeight="163.0" fitWidth="256.0" layoutX="13.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView onMouseClicked="#toHome" fitHeight="163.0" fitWidth="256.0" layoutX="13.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/logotest.png" />
                      </image>
@@ -30,7 +30,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </ImageView>
-                  <Button fx:id="myPagesButton" layoutX="646.0" layoutY="72.0" mnemonicParsing="false" onAction="#enableMyPage" text="  MINA SIDOR">
+                  <Button fx:id="myPagesButton" layoutX="646.0" layoutY="72.0" mnemonicParsing="false" onAction="#toMyPage" text="  MINA SIDOR">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -59,7 +59,7 @@
                         <Font size="20.0" />
                      </font>
                   </TextField>
-                  <Button fx:id="searchButton" layoutX="518.0" layoutY="71.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="122.0" text="SÖK">
+                  <Button fx:id="searchButton" onAction="#toProductView" layoutX="518.0" layoutY="71.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="122.0" text="SÖK">
                      <font>
                         <Font size="20.0" />
                      </font>

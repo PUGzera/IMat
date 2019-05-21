@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<fx:root prefHeight="645.0" prefWidth="1000.0" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/8.0.1" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <GridPane fx:id="gridPane" alignment="CENTER" gridLinesVisible="false" hgap="20.0" layoutX="-27.0" layoutY="-16.0" prefHeight="645.0" prefWidth="1000.0" vgap="15.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <columnConstraints>
+                <ColumnConstraints hgrow="NEVER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="225.0" />
+                <ColumnConstraints hgrow="NEVER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="225.0" />
+                <ColumnConstraints hgrow="NEVER" maxWidth="Infinity" minWidth="-Infinity" prefWidth="225.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="-Infinity" prefHeight="300.0" vgrow="NEVER" />
+                <RowConstraints minHeight="-Infinity" prefHeight="300.0" vgrow="NEVER" />
+                <RowConstraints minHeight="-Infinity" prefHeight="300.0" vgrow="NEVER" />
+                <RowConstraints minHeight="-Infinity" prefHeight="300.0" vgrow="NEVER" />
+            </rowConstraints>
+        </GridPane>
+    </children>
+</fx:root>
