@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<fx:root fx:id="customerDataPane" prefHeight="645.0" prefWidth="1000.0" style="-fx-background-color: #808080;" type="AnchorPane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <Separator layoutX="500.0" orientation="VERTICAL" prefHeight="645.0" prefWidth="10.0" />
+        <Separator layoutX="502.0" layoutY="322.0" prefWidth="498.0" />
+        <Label layoutX="680.0" layoutY="350.0" text="Sparade Kontokort">
+            <font>
+                <Font size="19.0" />
+            </font>
+        </Label>
+        <Label layoutX="28.0" layoutY="39.0" text="Personnummer">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Label>
+        <Label layoutX="28.0" layoutY="128.0" text="Leveransadress">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Label>
+        <Label layoutX="28.0" layoutY="313.0" text="E-post">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Label>
+        <Label layoutX="28.0" layoutY="413.0" text="Mobiltelefon">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Label>
+        <TextField fx:id="pNumField" layoutX="29.0" layoutY="66.0" prefHeight="30.0" prefWidth="190.0" promptText="Personnummer" />
+        <TextField fx:id="fNameField" layoutX="28.0" layoutY="158.0" prefHeight="30.0" prefWidth="190.0" promptText="Förnamn" />
+        <TextField fx:id="sNameField" layoutX="233.0" layoutY="158.0" prefHeight="30.0" prefWidth="190.0" promptText="Efternamn" />
+        <TextField fx:id="adressField" layoutX="28.0" layoutY="202.0" prefHeight="30.0" prefWidth="395.0" promptText="Gatuadress" />
+        <TextField fx:id="zipField" layoutX="28.0" layoutY="243.0" prefHeight="30.0" prefWidth="190.0" promptText="Postkod" />
+        <TextField fx:id="zipState" layoutX="233.0" layoutY="243.0" prefHeight="30.0" prefWidth="190.0" promptText="Postort" />
+        <TextField fx:id="mailField" layoutX="28.0" layoutY="348.0" prefHeight="30.0" prefWidth="190.0" promptText="E-post" />
+        <TextField fx:id="mailField2" layoutX="233.0" layoutY="348.0" prefHeight="30.0" prefWidth="190.0" promptText="Repetera E-post" />
+        <TextField fx:id="phoneField" layoutX="28.0" layoutY="444.0" prefHeight="30.0" prefWidth="190.0" promptText="Mobiltelefon" />
+        <Button fx:id="saveCustomerDataBtn" layoutX="28.0" layoutY="592.0" mnemonicParsing="false" onAction="#saveCustomerData" prefHeight="28.0" prefWidth="395.0" text="Spara Uppgifter">
+            <font>
+                <Font name="System Bold" size="12.0" />
+            </font>
+        </Button>
+        <TextField fx:id="firstCardNameField" layoutX="571.0" layoutY="60.0" prefHeight="37.0" prefWidth="370.0" promptText="Fullständigt namn på kort" />
+        <TextField fx:id="firstCardNumberField" layoutX="571.0" layoutY="109.0" prefHeight="37.0" prefWidth="370.0" promptText="Kortnummer" />
+        <TextField fx:id="firstMMField" layoutX="571.0" layoutY="157.0" prefHeight="37.0" prefWidth="67.0" promptText="MM" />
+        <TextField fx:id="firstYYField" layoutX="644.0" layoutY="157.0" prefHeight="37.0" prefWidth="67.0" promptText="YY" />
+        <TextField fx:id="firstCVVField" layoutX="720.0" layoutY="157.0" prefHeight="37.0" prefWidth="221.0" promptText="CVV2" />
+        <Button fx:id="saveCardBtn" layoutX="661.0" layoutY="225.0" mnemonicParsing="false" onAction="#saveCardData" prefHeight="25.0" prefWidth="158.0" text="Spara Kortuppgifter">
+            <font>
+                <Font name="System Bold" size="12.0" />
+            </font>
+        </Button>
+        <Label layoutX="700.0" layoutY="25.0" text="Kreditkort">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Label>
+        <ChoiceBox fx:id="carcChoiceBox" layoutX="680.0" layoutY="391.0" prefWidth="150.0" />
+        <TextField fx:id="secondCardNameField" layoutX="572.0" layoutY="443.0" prefHeight="37.0" prefWidth="370.0" promptText="Fullständigt namn på kort" />
+        <TextField fx:id="secondCardNumberField" layoutX="570.0" layoutY="491.0" prefHeight="37.0" prefWidth="370.0" promptText="Kortnummer" />
+        <TextField fx:id="secondMMField" layoutX="572.0" layoutY="540.0" prefHeight="37.0" prefWidth="67.0" promptText="MM" />
+        <TextField fx:id="secondYYField" layoutX="645.0" layoutY="540.0" prefHeight="37.0" prefWidth="67.0" promptText="YY" />
+        <TextField fx:id="secondCVVField" layoutX="721.0" layoutY="540.0" prefHeight="37.0" prefWidth="221.0" promptText="CVV2" />
+        <Button layoutX="570.0" layoutY="593.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="190.0" text="Gör till primärt Kontokort">
+            <font>
+                <Font name="System Bold" size="12.0" />
+            </font>
+        </Button>
+        <Button layoutX="811.0" layoutY="593.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="127.0" text="Ta bort kontokort">
+            <font>
+                <Font name="System Bold" size="12.0" />
+            </font>
+        </Button>
+        <Label layoutX="120.0" layoutY="510.0" prefHeight="27.0" prefWidth="190.0" text="Förvald Leveransmetod">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Label>
+        <RadioButton fx:id="homeDeliveryBtn" layoutX="85.0" layoutY="550.0" mnemonicParsing="false" text="Hemleverans">
+            <toggleGroup>
+                <ToggleGroup fx:id="delivery" />
+            </toggleGroup>
+            <font>
+                <Font size="13.0" />
+            </font>
+        </RadioButton>
+        <RadioButton fx:id="storeDeliveryButton" layoutX="233.0" layoutY="550.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="102.0" text="Hämta i affär" toggleGroup="$delivery">
+            <font>
+                <Font size="13.0" />
+            </font>
+        </RadioButton>
+    </children>
+</fx:root>
