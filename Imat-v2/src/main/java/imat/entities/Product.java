@@ -94,4 +94,8 @@ public class Product {
         return this.id + " - " + this.name;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        return ((Product) obj).getProductId() == productId;
+    }
 }

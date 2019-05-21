@@ -86,5 +86,6 @@ public class CustomerDataHandler extends AnchorPane implements Observer {
     @Override
     public void update() {
         // vad du nu vill göra när staten ändras
+
     }
 }

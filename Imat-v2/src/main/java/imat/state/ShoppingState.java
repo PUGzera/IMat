@@ -25,9 +25,11 @@ public class ShoppingState implements Observable {
     private Order order;
 
     private OrderRepo orderRepo;
+    private ProductRepo productRepo;
 
-    public ShoppingState(OrderRepo orderRepo) {
+    public ShoppingState(OrderRepo orderRepo, ProductRepo productRepo) {
         this.orderRepo = orderRepo;
+        this.productRepo = productRepo;
     }
 
     @Override
@@ -58,16 +60,22 @@ public class ShoppingState implements Observable {
     }
 
     public void addProducts(List<ShoppingItem> products) {
-        products.stream()
-                .filter(p -> this.products.contains(p))
+        this.products.stream()
+                .filter(products::contains)
                 .forEach(ShoppingItem::incAmount);
-        this.products.clear();
-        this.products.addAll(products);
+        products.stream()
+                .filter(p -> !this.products.contains(p))
+                .forEach(p -> this.products.add(p));
         notifyObservers();
     }
 
     public void removeProducts(List<ShoppingItem> products) {
-        this.products.removeAll(products);
+        this.products.stream()
+                .filter(products::contains)
+                .forEach(ShoppingItem::decAmount);
+        products.stream()
+                .filter(p -> this.products.contains(p))
+                .forEach(p -> { if(this.products.get(this.products.indexOf(p)).getAmount() == 1) this.products.remove(p); });
         notifyObservers();
     }
 
@@ -182,6 +190,10 @@ public class ShoppingState implements Observable {
         return orderRepo;
     }
 
+    public ProductRepo getProductRepo() {
+        return productRepo;
+    }
+
     public enum State {
         CHECKOUT, BILLING_INFORMATION, PAYMENT_METHOD, SHIPPING_METHOD, CONFIRMATION, DONE
     }
@@ -212,6 +224,28 @@ public class ShoppingState implements Observable {
                     , Collections.singleton(new Gson().toJson(getBillingInformation())));
         } catch (IOException | URISyntaxException e) {
             e.printStackTrace();
+        }
+    }
+
+    public void cachePaymentInfo(PaymentMethod paymentMethod) {
+        if (paymentMethod instanceof CreditCard && !getCachedPaymentInfo().contains(paymentMethod)) {
+            try {
+                Files.write(Paths.get(getClass().getClassLoader().getResource("cache/payment-info.json").toURI())
+                        , Collections.singleton(new Gson().toJson(paymentMethod)), StandardOpenOption.APPEND);
+            } catch (IOException | URISyntaxException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public void cacheBillingInfo(BillingInformation billingInformation) {
+        if(billingInformation.isValid()) {
+            try {
+                Files.write(Paths.get(getClass().getClassLoader().getResource("cache/billing-info.json").toURI())
+                        , Collections.singleton(new Gson().toJson(billingInformation)));
+            } catch (IOException | URISyntaxException e) {
+                e.printStackTrace();
+            }
         }
     }
 

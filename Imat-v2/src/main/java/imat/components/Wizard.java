@@ -219,7 +219,7 @@ public class Wizard extends AnchorPane implements Observer {
         observable.clear();
         instance = new Wizard(observable, controller);
         controller.resetWizard();
-        controller.goHome();
+        controller.toHome();
     }
 
     private void onTaskChecked(AnchorPane pane) {

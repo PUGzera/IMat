@@ -32,4 +32,8 @@ public class ShoppingItem {
         if(amount > 1) amount--;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        return ((ShoppingItem) obj).getProduct().equals(product);
+    }
 }

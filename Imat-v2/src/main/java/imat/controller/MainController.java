@@ -1,6 +1,7 @@
 package imat.controller;
 
 import imat.components.CustomerDataHandler;
+import imat.components.GridView;
 import imat.components.ShoppingCart;
 import imat.components.Wizard;
 import imat.entities.OrderRepo;
@@ -10,6 +11,7 @@ import imat.util.OrderHistoryHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import imat.state.ShoppingState;
 import javafx.scene.layout.StackPane;
@@ -40,9 +42,14 @@ public class MainController {
     @FXML
     private ScrollPane dynamicPane;
 
+    @FXML
+    private TextField searchField;
+
     private Wizard wizard;
 
     private CustomerDataHandler customerDataHandler;
+
+    private GridView gridView;
 
     private ShoppingCart shoppingCart;
 
@@ -50,9 +57,10 @@ public class MainController {
 
     @FXML
     private void initialize() throws IOException {
-        observable = new ShoppingState(orderRepo);
+        observable = new ShoppingState(orderRepo, productRepo);
         customerDataHandler = new CustomerDataHandler(observable);
         wizard = Wizard.getInstance(observable, this);
+        gridView = new GridView(observable);
         shoppingCart = ShoppingCart.getInstance(observable);
         shoppingCartPane.getChildren().add(shoppingCart);
         observable.addProducts(StreamSupport.stream(productRepo
@@ -74,6 +82,9 @@ public class MainController {
             case MY_PAGE:
                 dynamicPane.setContent(customerDataHandler);
                 break;
+            case PRODUCT_VIEW:
+                dynamicPane.setContent(gridView);
+                break;
         }
     }
 
@@ -84,13 +95,13 @@ public class MainController {
     }
 
     @FXML
-    public void goHome() {
+    public void toHome() {
         page = Page.HOME;
         loadPage();
     }
 
     @FXML
-    public void enableMyPage(){
+    public void toMyPage(){
         page = Page.MY_PAGE;
         loadPage();
         /*if(!mainPane.getChildren().contains(customerDataHandler)){
@@ -100,6 +111,13 @@ public class MainController {
             int index = mainPane.getChildren().indexOf(customerDataHandler);
             mainPane.getChildren().get(index).toFront();
         }*/
+    }
+
+    @FXML
+    private void toProductView() {
+        gridView.search(searchField.getText());
+        page = Page.PRODUCT_VIEW;
+        loadPage();
     }
 
     public void resetWizard() {

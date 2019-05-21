@@ -63,11 +63,13 @@ public class CustomerContactInfoHandler extends AnchorPane {
 
     @FXML
     public void saveCustomerData(){
-        shoppingState.setBillingInformation(new BillingInformation(
+        BillingInformation billingInformation = new BillingInformation(
                 mailField.getText(), phoneField.getText(),
                 pNumField.getText(), zipField.getText(), fNameField.getText(),
-                sNameField.getText(), adressField.getText()));
-        shoppingState.cacheBillingInfo();
+                sNameField.getText(), adressField.getText());
+        shoppingState.cacheBillingInfo(billingInformation);
+        this.billingInformation = billingInformation;
+        fillContactFields();
     }
 
     public void fillContactFields(){
@@ -91,9 +93,8 @@ public class CustomerContactInfoHandler extends AnchorPane {
     }
 
     public void fillCCField(){
-        List<CreditCard> creditCards =  shoppingState.getCachedPaymentInfo();
+        List<CreditCard> creditCards = shoppingState.getCachedPaymentInfo();
         CreditCard primaryCard = creditCards.get(0);
-
         secondCardNameField.setText(primaryCard.getHoldersName());
         secondCardNumberField.setText(primaryCard.getCardNumber());
         secondMMField.setText(String.valueOf(primaryCard.getValidMonth()));
@@ -105,15 +106,17 @@ public class CustomerContactInfoHandler extends AnchorPane {
     public void saveCardData(){
         System.out.println("Trying to Save CC");
         CreditCard.CardType type = firstCardNumberField.getText().charAt(0)==5? CreditCard.CardType.MASTER_CARD : CreditCard.CardType.VISA;
-        shoppingState.setPaymentMethod(new CreditCard(
+        shoppingState.cachePaymentInfo(new CreditCard(
                 type, firstCardNameField.getText(),
                 Integer.valueOf(firstMMField.getText()), Integer.valueOf(firstYYField.getText()),
                 firstCardNumberField.getText(), Integer.valueOf(firstCVVField.getText())));
-        shoppingState.cachePaymentInfo();
+        fillCCField();
+        fillChoiceBox();
         System.out.println("Saved CreditCardInfo");
     }
 
     public void fillChoiceBox(){
+        carcChoiceBox.getItems().clear();
         carcChoiceBox.getItems().addAll(shoppingState.getCachedPaymentInfo());
         carcChoiceBox.getSelectionModel().selectFirst();
         carcChoiceBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {

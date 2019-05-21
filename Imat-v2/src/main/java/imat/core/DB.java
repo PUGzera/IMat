@@ -23,10 +23,6 @@ public class DB implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        List<Product> productList = new ArrayList<>();
-        Path path = Paths.get(getClass().getClassLoader().getResource("cache/products.txt").toURI());
-        List<String> products = Files.readAllLines(path);
-        products.forEach(s -> productRepo.save(parser(s)));
     }
 
     private Product parser(String string) {
