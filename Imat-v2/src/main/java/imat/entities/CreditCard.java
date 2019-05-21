@@ -29,7 +29,7 @@ public class CreditCard implements PaymentMethod {
     }
 
     public void setCardNumber(String cardNumber) {
-        if(validCardNumber(cardNumber)) this.cardNumber = cardNumber;
+        if(validCardNumber(cardNumber)) this.cardNumber = cardNumber.replace(" ", "");
     }
 
     public CardType getCardType() {
@@ -74,9 +74,6 @@ public class CreditCard implements PaymentMethod {
 
     @Override
     public boolean isValid() {
-        System.out.println(cardType);
-        System.out.println(cardNumber);
-        System.out.println(holdersName);
         return cardType != null && !cardNumber.isEmpty() && validMonth != 0 && validYear != 0 && verificationCode != 0 && !holdersName.isEmpty();
     }
 

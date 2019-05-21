@@ -28,8 +28,11 @@ public class Order {
     @NotNull
     private Double price;
     @NotNull
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.EAGER)
     private Map<Product, Integer> map;
+
+    protected Order() {
+    }
 
     public Order(LocalDate localDate, String firstName, String lastName, String address, Double price, Map<Product, Integer> map) {
         this.localDate = localDate;

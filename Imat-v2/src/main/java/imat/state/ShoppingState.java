@@ -178,6 +178,10 @@ public class ShoppingState implements Observable {
         this.shippingInformation = shippingInformation;
     }
 
+    public OrderRepo getOrderRepo() {
+        return orderRepo;
+    }
+
     public enum State {
         CHECKOUT, BILLING_INFORMATION, PAYMENT_METHOD, SHIPPING_METHOD, CONFIRMATION, DONE
     }
@@ -196,7 +200,6 @@ public class ShoppingState implements Observable {
             try {
                 Files.write(Paths.get(getClass().getClassLoader().getResource("cache/payment-info.json").toURI())
                         , Collections.singleton(new Gson().toJson(getPaymentMethod())), StandardOpenOption.APPEND);
-                System.out.println("caching card");
             } catch (IOException | URISyntaxException e) {
                 e.printStackTrace();
             }

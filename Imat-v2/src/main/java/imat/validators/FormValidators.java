@@ -5,7 +5,7 @@ import java.time.LocalDate;
 public class FormValidators {
 
     public static boolean validatePhoneNumber(String phone){
-        return phone.matches("07+\\d{8}") || phone.equals("");
+        return phone.matches("07+\\d{8}") || phone.replace(" ", "").equals("");
     }
 
     public static boolean validEmail(String email) {
@@ -21,11 +21,11 @@ public class FormValidators {
     }
 
     public static boolean validZipCode(String zipcode) {
-        return zipcode.matches("[\\d]{5}");
+        return zipcode.replace(" ", "").matches("[\\d]{5}");
     }
 
     public static boolean validCardNumber(String cardNumber) {
-        return cardNumber.matches("\\d{16}");
+        return cardNumber.replace(" ", "").matches("\\d{16}");
     }
 
     public static boolean validCVC(String cvc) {
