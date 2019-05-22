@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.TextFlow?>
 
-<fx:root maxWidth="1000" prefHeight="495" prefWidth="1000" styleClass="task" stylesheets="@/css/task.css" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxWidth="1000" prefHeight="535" prefWidth="1000" styleClass="task" stylesheets="@/css/task.css" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane prefHeight="100.0" prefWidth="1000.0" styleClass="selected">
          <children>
@@ -20,7 +20,7 @@
             </Label>
          </children>
       </AnchorPane>
-      <Separator layoutX="497.0" layoutY="100.0" orientation="VERTICAL" prefHeight="395.0" prefWidth="3.0" />
+      <Separator layoutX="497.0" layoutY="100.0" orientation="VERTICAL" prefHeight="435.0" prefWidth="3.0" />
       <TextField fx:id="emailTextField" editable="false" layoutX="14.0" layoutY="157.0" promptText="exempel@address" />
       <TextField fx:id="phoneTextField" editable="false" layoutX="14.0" layoutY="227.0" promptText="07X-XXX XX XX" />
       <TextField fx:id="ssnTextField" editable="false" layoutX="14.0" layoutY="297.0" promptText="ÅÅÅÅ-MM-DD-XXXX" />

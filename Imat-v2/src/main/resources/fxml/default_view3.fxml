@@ -92,51 +92,19 @@
          <left>
             <AnchorPane prefWidth="235.0" style="-fx-background-color: #DDDDDD;" BorderPane.alignment="CENTER">
                <children>
-                  <Accordion fx:id="menu" prefHeight="329.0" prefWidth="235.0">
+                  <Accordion expandedPane="$categoryTitledPane" fx:id="menu" prefHeight="800.0" prefWidth="235.0">
                      <panes>
                         <TitledPane fx:id="offers" animated="false" collapsible="false" graphicTextGap="10.0" text="Erbjudanden">
                            <font>
                               <Font size="20.0" />
                            </font>
                         </TitledPane>
-                        <TitledPane animated="false" text="untitled ">
+                        <TitledPane fx:id="categoryTitledPane"  animated="false" text="Kategorier">
                            <font>
                               <Font size="20.0" />
                            </font>
                            <content>
-                              <AnchorPane prefHeight="200.0" prefWidth="200.0" />
-                           </content>
-                        </TitledPane>
-                        <TitledPane animated="false" layoutX="10.0" layoutY="10.0" text="untitled ">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                           <content>
-                              <AnchorPane prefHeight="200.0" prefWidth="200.0" />
-                           </content>
-                        </TitledPane>
-                        <TitledPane animated="false" layoutX="10.0" layoutY="98.0" text="untitled">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                           <content>
-                              <AnchorPane prefHeight="200.0" prefWidth="200.0" />
-                           </content>
-                        </TitledPane>
-                        <TitledPane animated="false" layoutX="10.0" layoutY="144.0" text="untitled ">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                           <content>
-                              <AnchorPane prefHeight="200.0" prefWidth="200.0" />
-                           </content>
-                        </TitledPane>
-                        <TitledPane animated="false" layoutX="10.0" layoutY="188.0" prefHeight="137.0" prefWidth="235.0" text="untitled ">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                           <content>
-                              <AnchorPane prefHeight="200.0" prefWidth="200.0" />
+                              <ListView fx:id="categoryListView" prefHeight="500.0" prefWidth="200.0" />
                            </content>
                         </TitledPane>
                      </panes>

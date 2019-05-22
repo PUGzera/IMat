@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<fx:root maxHeight="-Infinity" maxWidth="225" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="230.0" style="-fx-background-color: #DDDDDD;" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/8.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxHeight="-Infinity" maxWidth="225" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="230.0" style="-fx-background-color: #DDDDDD;" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
     <children>
         <Button alignment="TOP_CENTER" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" prefHeight="300.0" prefWidth="230.0" text="PRODUKTNAMN">
             <graphic>
@@ -37,12 +37,12 @@
                 <Font size="22.0" />
             </font>
         </TextField>
-        <Label fx:id="price" layoutX="75.0" layoutY="184.0" prefHeight="46.0" prefWidth="81.0" text="56.00" textFill="#16a659">
+        <Label fx:id="price" layoutX="27.0" layoutY="184.0" prefHeight="46.0" prefWidth="172.0" text="46.00" textFill="#16a659">
             <font>
                 <Font name="System Bold" size="30.0" />
             </font>
         </Label>
-        <Label fx:id="productName" layoutX="54.0" layoutY="153.0" text="productName">
+        <Label fx:id="productName" layoutX="20.0" layoutY="153.0" prefHeight="26.0" prefWidth="192.0" text="productName">
             <font>
                 <Font size="20.0" />
             </font>

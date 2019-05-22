@@ -8,7 +8,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Line?>
 
-<fx:root prefHeight="645.0" prefWidth="1000.0" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root prefHeight="685.0" prefWidth="1000.0" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ProgressIndicator fx:id="checkoutProgressIndicator" layoutX="475.0" layoutY="300.0" prefHeight="50.0" prefWidth="50.0" progress="0.0" visible="false" />
       <AnchorPane fx:id="progressHeader" prefHeight="75.0" prefWidth="1000.0" style="-fx-border-color: black; -fx-border-color-top: transparent">
@@ -29,9 +29,9 @@
             <Label fx:id="taskFiveLabel" layoutX="782.0" layoutY="53.0" text="Bekräftelse" />
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="dynamicPane" prefHeight="495.0" prefWidth="1000.0" layoutY="75">
+      <AnchorPane fx:id="dynamicPane" prefHeight="535.0" prefWidth="1000.0" layoutY="75">
       </AnchorPane>
-      <AnchorPane layoutY="570.0" prefHeight="75.0" prefWidth="1000.0" style="-fx-border-color: black">
+      <AnchorPane layoutY="610.0" prefHeight="75.0" prefWidth="1000.0" style="-fx-border-color: black">
          <children>
             <Button fx:id="nextButton" layoutX="889.0" layoutY="25.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="95.0" text="Nästa Steg" />
             <CheckBox fx:id="saveProductsCheckBox" layoutX="722.0" layoutY="30.0" mnemonicParsing="false" text="Spara inköpslista" />

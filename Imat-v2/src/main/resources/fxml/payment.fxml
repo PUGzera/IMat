@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<fx:root maxWidth="-Infinity" minWidth="-Infinity" prefHeight="495" prefWidth="1000" styleClass="task" stylesheets="@/css/task.css" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxWidth="-Infinity" minWidth="-Infinity" prefHeight="535" prefWidth="1000" styleClass="task" stylesheets="@/css/task.css" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane prefHeight="100.0" prefWidth="1000.0">
          <children>
@@ -59,6 +59,6 @@
             <ComboBox fx:id="monthComboBox" layoutX="576.0" layoutY="30.0" prefHeight="27.0" prefWidth="74.0" promptText="MM" />
          </children>
       </AnchorPane>
-      <ListView fx:id="cardsListView" layoutY="200.0" prefHeight="295.0" prefWidth="1000.0" />
+      <ListView fx:id="cardsListView" layoutY="200.0" prefHeight="335.0" prefWidth="1000.0" />
    </children>
 </fx:root>

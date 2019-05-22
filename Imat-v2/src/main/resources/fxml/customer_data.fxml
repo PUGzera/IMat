@@ -47,7 +47,7 @@
         </HBox>
         <AnchorPane fx:id="orderHistoryPane" layoutY="100.0" prefHeight="645.0" prefWidth="1000.0" style="-fx-background-color: #808080;">
             <children>
-                <Label layoutX="79.0" layoutY="44.0" text="Aktiva ordrar (1 st) ">
+                <Label fx:id="activeOrderLabel" layoutX="79.0" layoutY="44.0" text="Aktiva ordrar (1 st) ">
                     <font>
                         <Font size="20.0" />
                     </font>
