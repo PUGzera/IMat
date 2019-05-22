@@ -70,12 +70,12 @@ public class ShoppingState implements Observable {
     }
 
     public void removeProducts(List<ShoppingItem> products) {
-        this.products.stream()
-                .filter(products::contains)
-                .forEach(ShoppingItem::decAmount);
         products.stream()
                 .filter(p -> this.products.contains(p))
                 .forEach(p -> { if(this.products.get(this.products.indexOf(p)).getAmount() == 1) this.products.remove(p); });
+        this.products.stream()
+                .filter(products::contains)
+                .forEach(ShoppingItem::decAmount);
         notifyObservers();
     }
 

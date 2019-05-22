@@ -28,7 +28,7 @@ public class ProductViewItem extends AnchorPane {
 
     private Product product;
 
-    public ProductViewItem(Product product, GridView gridView){
+    public ProductViewItem(Product product, int amount, GridView gridView){
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/product_view_item.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -38,9 +38,16 @@ public class ProductViewItem extends AnchorPane {
             fxmlLoader.load();
             productName.setText(product.getName());
             productImageListView.setImage(new Image(getClass().getResource("/images/product_"+product.getProductId()+".jpg").toString()));
-            price.setText(String.valueOf(product.getPrice())+"kr/"+product.getUnit());
-            plusButtonListView.onActionProperty().setValue(e -> gridView.addProduct(this));
-            minusButtonListView.onActionProperty().setValue(e -> gridView.removeProduct(this));
+            price.setText(product.getPrice() +product.getUnit());
+            plusButtonListView.onActionProperty().setValue(e -> {
+                gridView.addProduct(this);
+                quantityFieldListView.setText(String.valueOf(Integer.valueOf(quantityFieldListView.getText()) + 1));
+            });
+            minusButtonListView.onActionProperty().setValue(e -> {
+                gridView.removeProduct(this);
+                quantityFieldListView.setText(String.valueOf(Integer.valueOf(quantityFieldListView.getText()) - 1));
+            });
+            quantityFieldListView.setText(String.valueOf(amount));
         } catch (IOException e) {
             e.printStackTrace();
         }

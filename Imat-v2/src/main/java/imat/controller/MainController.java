@@ -5,22 +5,28 @@ import imat.components.GridView;
 import imat.components.ShoppingCart;
 import imat.components.Wizard;
 import imat.entities.OrderRepo;
+import imat.entities.Product;
 import imat.entities.ProductRepo;
 import imat.entities.ShoppingItem;
-import imat.util.OrderHistoryHandler;
 import javafx.fxml.FXML;
-import javafx.scene.control.ListView;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import imat.state.ShoppingState;
 import javafx.scene.layout.StackPane;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
+
+import static imat.util.Translator.getCategories;
+import static imat.util.Translator.translate;
 
 @Component
 public class MainController {
@@ -45,6 +51,9 @@ public class MainController {
     @FXML
     private TextField searchField;
 
+    @FXML
+    private ListView<Text> categoryListView;
+
     private Wizard wizard;
 
     private CustomerDataHandler customerDataHandler;
@@ -55,25 +64,46 @@ public class MainController {
 
     private Page page = Page.HOME;
 
+    List<String> categories = new ArrayList<>();
+
     @FXML
     private void initialize() throws IOException {
         observable = new ShoppingState(orderRepo, productRepo);
-        customerDataHandler = new CustomerDataHandler(observable);
+        customerDataHandler = CustomerDataHandler.getInstance(observable);
         wizard = Wizard.getInstance(observable, this);
-        gridView = new GridView(observable);
+        gridView = GridView.getInstance(observable);
         shoppingCart = ShoppingCart.getInstance(observable);
         shoppingCartPane.getChildren().add(shoppingCart);
         observable.addProducts(StreamSupport.stream(productRepo
-                .findByNameLike("bröd").spliterator(), false)
+                .findByNameContainingIgnoreCase("bröd").spliterator(), false)
                 .map(p -> new ShoppingItem(p, 1))
                 .collect(Collectors.toList()));
+        initCategoryTitledPane();
+        loadPage();
+    }
+
+    private void initCategoryTitledPane(){
+        getCategories().stream()
+                .map(c -> {
+                    Text text = new Text(c);
+                    text.setFont(Font.font(16));
+                    return text;
+                })
+                .forEach(categoryListView.getItems()::add);
+        categoryListView.getSelectionModel().selectedItemProperty()
+                .addListener((o, ov, nv) -> {
+                    gridView.searchByCategory(translate(nv.getText()).toUpperCase());
+                    page = Page.PRODUCT_VIEW;
+                    loadPage();
+                });
     }
 
     private void loadPage() {
         shoppingCartPane.setVisible(true);
         switch (page) {
             case HOME:
-                dynamicPane.setContent(new AnchorPane());
+                gridView.search("");
+                dynamicPane.setContent(gridView);
                 break;
             case WIZARD:
                 shoppingCartPane.setVisible(false);
@@ -96,7 +126,7 @@ public class MainController {
 
     @FXML
     public void toHome() {
-        page = Page.HOME;
+        page = Page.PRODUCT_VIEW;
         loadPage();
     }
 

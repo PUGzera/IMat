@@ -1,6 +1,7 @@
 package imat.util;
 
 
+import imat.components.CustomerDataHandler;
 import imat.components.OrderHistory;
 import imat.components.OrderHistoryItem;
 import imat.entities.Order;
@@ -15,17 +16,17 @@ public class OrderHistoryHandler {
 
     private List<Order> orders;
 
-    private ShoppingState shoppingState;
+    private CustomerDataHandler customerDataHandler;
 
-    public OrderHistoryHandler(ShoppingState shoppingState) {
-        orders = (List<Order>) shoppingState.getOrderRepo().findAll();
+    public OrderHistoryHandler(CustomerDataHandler customerDataHandler) {
+        this.customerDataHandler = customerDataHandler;
+        orders = customerDataHandler.getActiveOrders();
     }
 
     public List<OrderHistory> getOrderHistories(){
         List<OrderHistory> orderHistories = new ArrayList<>();
         for (int i = 0; i < orders.size(); i++) {
             OrderHistory orderHistory = new OrderHistory();
-            System.out.println(orderHistory);
             orderHistory.getOrderHistoryTitledPane().setText(createTitle(i));
             orderHistory.getOrderHistoryPaneToAddTo().getChildren().addAll(createOrderHistoryItemList(i));
             orderHistories.add(orderHistory);

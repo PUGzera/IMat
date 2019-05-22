@@ -1,18 +1,27 @@
 package imat.components;
 
 
+import imat.entities.Order;
 import imat.state.Observer;
 import imat.state.ShoppingState;
 import imat.util.OrderHistoryHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
+
+import static imat.validators.FormValidators.validFutureDate;
 
 public class CustomerDataHandler extends AnchorPane implements Observer {
+
+    private static CustomerDataHandler ourInstance = null;
 
     @FXML Button shoppingListBtn;
     @FXML Button orderHistoryBtn;
@@ -25,26 +34,35 @@ public class CustomerDataHandler extends AnchorPane implements Observer {
     @FXML VBox innerShopingVBox;
     @FXML VBox currentOrderPane;
 
+    @FXML
+    private Label activeOrderLabel;
+
     private OrderHistoryHandler orderHistoryHandler;
 
     private ShoppingState shoppingState;
 
-    public CustomerDataHandler(ShoppingState shoppingState) {
+    private CustomerDataHandler(ShoppingState shoppingState) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/customer_data.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
         this.shoppingState = shoppingState;
         try {
             fxmlLoader.load();
+            updateActiveOrderLabel();
         } catch (IOException e) {
             e.printStackTrace();
         }
         customerDataPaneToFront();
     }
 
+    public static CustomerDataHandler getInstance(ShoppingState shoppingState) {
+        if(ourInstance == null) ourInstance = new CustomerDataHandler(shoppingState);
+        return ourInstance;
+    }
+
 
     private void fillOrderHistoryData(){
-        orderHistoryHandler = new OrderHistoryHandler(shoppingState);
+        orderHistoryHandler = new OrderHistoryHandler(this);
         currentOrderPane.getChildren().addAll(orderHistoryHandler.getOrderHistories());
     }
 
@@ -67,6 +85,17 @@ public class CustomerDataHandler extends AnchorPane implements Observer {
         orderHistoryPane.toFront();
     }
 
+    private void updateActiveOrderLabel(){
+        long activeOrderCount = getActiveOrders().size();
+        activeOrderLabel.setText("Aktiva ordrar ( "+activeOrderCount+" st )");
+    }
+
+    public List<Order> getActiveOrders() {
+        return StreamSupport.stream(shoppingState.getOrderRepo().findAll().spliterator(), false)
+                .filter(o -> validFutureDate(o.getLocalDate()))
+                .collect(Collectors.toList());
+    }
+
     @FXML
     public void shoppingListToFront(){
         shoppingListPane.toFront();
@@ -85,7 +114,7 @@ public class CustomerDataHandler extends AnchorPane implements Observer {
 
     @Override
     public void update() {
-        // vad du nu vill göra när staten ändras
-
+        updateActiveOrderLabel();
+        fillOrderHistoryData();
     }
 }

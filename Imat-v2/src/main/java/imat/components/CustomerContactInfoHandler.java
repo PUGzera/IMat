@@ -94,12 +94,14 @@ public class CustomerContactInfoHandler extends AnchorPane {
 
     public void fillCCField(){
         List<CreditCard> creditCards = shoppingState.getCachedPaymentInfo();
-        CreditCard primaryCard = creditCards.get(0);
-        secondCardNameField.setText(primaryCard.getHoldersName());
-        secondCardNumberField.setText(primaryCard.getCardNumber());
-        secondMMField.setText(String.valueOf(primaryCard.getValidMonth()));
-        secondYYField.setText(String.valueOf(primaryCard.getValidYear()));
-        secondCVVField.setText(String.valueOf(primaryCard.getVerificationCode()));
+        if(creditCards.size() > 0) {
+            CreditCard primaryCard = creditCards.get(0);
+            secondCardNameField.setText(primaryCard.getHoldersName());
+            secondCardNumberField.setText(primaryCard.getCardNumber());
+            secondMMField.setText(String.valueOf(primaryCard.getValidMonth()));
+            secondYYField.setText(String.valueOf(primaryCard.getValidYear()));
+            secondCVVField.setText(String.valueOf(primaryCard.getVerificationCode()));
+        }
     }
 
     @FXML

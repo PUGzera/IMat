@@ -33,7 +33,7 @@ public class CartItem extends AnchorPane {
             this.shoppingCart = shoppingCart;
             this.shoppingItem = shoppingItem;
             productNameLabel.setText(shoppingItem.getProduct().getName());
-            productQuantityLabel.setText("Antal: " + shoppingItem.getAmount());
+            productQuantityLabel.setText("Antal: " + shoppingItem.getAmount()+" "+shoppingItem.getProduct().getUnit().replace("kr/", ""));
             productPriceLabel.setText("Pris: " + shoppingItem.getAmount() * shoppingItem.getProduct().getPrice()+"kr");
             productImage.setImage(new Image(getClass().getResource("/images/product_"+shoppingItem.getProduct().getProductId()+".jpg").toString()));
             deleteImage.setOnMouseClicked(e -> delete());
@@ -50,7 +50,7 @@ public class CartItem extends AnchorPane {
             root.load();
             this.shoppingItem = shoppingItem;
             productNameLabel.setText(shoppingItem.getProduct().getName());
-            productQuantityLabel.setText("Antal: " + shoppingItem.getAmount());
+            productQuantityLabel.setText("Antal: " + shoppingItem.getAmount()+" "+shoppingItem.getProduct().getUnit().replace("kr/", ""));
             productPriceLabel.setText("Pris: " + shoppingItem.getAmount() * shoppingItem.getProduct().getPrice()+"kr");
             productImage.setImage(new Image(getClass().getResource("/images/product_"+shoppingItem.getProduct().getProductId()+".jpg").toString()));
             deleteImage.getParent().setVisible(false);
