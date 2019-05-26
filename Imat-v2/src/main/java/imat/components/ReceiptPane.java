@@ -43,7 +43,10 @@ public class ReceiptPane extends AnchorPane {
             this.wizard = wizard;
             orderIdLabel.setText("Order #"+order.getId());
             order.getMap().forEach((k, v) -> productsListView.getItems().add(new CartItem(new ShoppingItem(k, v))));
-            doneButton.onActionProperty().setValue(e -> wizard.resetWizard());
+            doneButton.onActionProperty().setValue(e -> {
+                wizard.resetWizard();
+                ourInstance = null;
+            });
         } catch (IOException e) {
             e.printStackTrace();
         }

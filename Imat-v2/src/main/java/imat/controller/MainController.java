@@ -10,6 +10,7 @@ import imat.entities.ProductRepo;
 import imat.entities.ShoppingItem;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.AnchorPane;
 import imat.state.ShoppingState;
 import javafx.scene.layout.StackPane;
@@ -43,7 +44,7 @@ public class MainController {
     private StackPane mainPane;
 
     @FXML
-    private AnchorPane shoppingCartPane;
+    private AnchorPane shoppingCartPane, shoppingCartPaneHolder;
 
     @FXML
     private ScrollPane dynamicPane;
@@ -68,6 +69,7 @@ public class MainController {
 
     @FXML
     private void initialize() throws IOException {
+        System.out.println(productRepo.findByName("Mjölk").getCategory());
         observable = new ShoppingState(orderRepo, productRepo);
         customerDataHandler = CustomerDataHandler.getInstance(observable);
         wizard = Wizard.getInstance(observable, this);
@@ -79,7 +81,14 @@ public class MainController {
                 .map(p -> new ShoppingItem(p, 1))
                 .collect(Collectors.toList()));
         initCategoryTitledPane();
+        initSearchPane();
         loadPage();
+    }
+
+    private void initSearchPane() {
+        searchField.setOnKeyPressed(e -> {
+            if(e.getCode() == KeyCode.ENTER) toProductView();
+        });
     }
 
     private void initCategoryTitledPane(){
@@ -92,21 +101,21 @@ public class MainController {
                 .forEach(categoryListView.getItems()::add);
         categoryListView.getSelectionModel().selectedItemProperty()
                 .addListener((o, ov, nv) -> {
-                    gridView.searchByCategory(translate(nv.getText()).toUpperCase());
+                    gridView.searchByCategory(translate(nv.getText()));
                     page = Page.PRODUCT_VIEW;
                     loadPage();
                 });
     }
 
     private void loadPage() {
-        shoppingCartPane.setVisible(true);
+        shoppingCartPaneHolder.setVisible(true);
         switch (page) {
             case HOME:
                 gridView.search("");
                 dynamicPane.setContent(gridView);
                 break;
             case WIZARD:
-                shoppingCartPane.setVisible(false);
+                shoppingCartPaneHolder.setVisible(false);
                 dynamicPane.setContent(wizard);
                 break;
             case MY_PAGE:
@@ -114,6 +123,7 @@ public class MainController {
                 break;
             case PRODUCT_VIEW:
                 dynamicPane.setContent(gridView);
+                dynamicPane.setVvalue(0);
                 break;
         }
     }
@@ -134,13 +144,6 @@ public class MainController {
     public void toMyPage(){
         page = Page.MY_PAGE;
         loadPage();
-        /*if(!mainPane.getChildren().contains(customerDataHandler)){
-            mainPane.getChildren().add(customerDataHandler);
-        }
-        else{
-            int index = mainPane.getChildren().indexOf(customerDataHandler);
-            mainPane.getChildren().get(index).toFront();
-        }*/
     }
 
     @FXML

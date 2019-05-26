@@ -64,7 +64,7 @@ public class ConfirmationPane extends AnchorPane {
                     "Kort innehavare: " + creditCard.getHoldersName() + "\n" +
                     "Leverans Datum: " + shippingInformation.getDate() + "\n" +
                     "Leveransmetod: "+ shippingInformation.getDeliveryMethod());
-            text.setFont(Font.font(14));
+            text.setFont(Font.font(16));
             paymentTextFlow.getChildren().add(text);
         } else if (paymentMethod instanceof Invoice) {
             paymentMethodLabel.setText("Faktura");
@@ -74,7 +74,7 @@ public class ConfirmationPane extends AnchorPane {
                     "Kund Namn: " + invoice.getName() + "\n" +
                     "Leverans Datum: " + shippingInformation.getDate() + "\n" +
                     "Leveransmetod: " + shippingInformation.getDeliveryMethod());
-            text.setFont(Font.font(14));
+            text.setFont(Font.font(16));
             paymentTextFlow.getChildren().add(text);
         }
     }

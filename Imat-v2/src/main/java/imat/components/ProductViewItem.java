@@ -40,14 +40,24 @@ public class ProductViewItem extends AnchorPane {
             productImageListView.setImage(new Image(getClass().getResource("/images/product_"+product.getProductId()+".jpg").toString()));
             price.setText(product.getPrice() +product.getUnit());
             plusButtonListView.onActionProperty().setValue(e -> {
-                gridView.addProduct(this);
-                quantityFieldListView.setText(String.valueOf(Integer.valueOf(quantityFieldListView.getText()) + 1));
+                if(Integer.valueOf(quantityFieldListView.getText()) < 21) {
+                    gridView.addProduct(this);
+                    quantityFieldListView.setText(String.valueOf(Integer.valueOf(quantityFieldListView.getText()) + 1));
+                }
             });
             minusButtonListView.onActionProperty().setValue(e -> {
-                gridView.removeProduct(this);
-                quantityFieldListView.setText(String.valueOf(Integer.valueOf(quantityFieldListView.getText()) - 1));
+                if(Integer.valueOf(quantityFieldListView.getText()) > 0) {
+                    gridView.removeProduct(this);
+                    quantityFieldListView.setText(String.valueOf(Integer.valueOf(quantityFieldListView.getText()) - 1));
+                }
             });
             quantityFieldListView.setText(String.valueOf(amount));
+            quantityFieldListView.textProperty().addListener((o, ov, nv) -> {
+                if (!nv.matches("\\d*")
+                || Integer.valueOf(nv) < 0
+                || Integer.valueOf(nv) > 21)
+                    quantityFieldListView.setText(nv.replaceAll(nv, "1"));
+            });
         } catch (IOException e) {
             e.printStackTrace();
         }

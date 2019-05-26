@@ -11,9 +11,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.Collections;
-import java.util.stream.StreamSupport;
+import java.util.List;
+
+import static imat.util.Translator.translate;
 
 
 public class GridView extends AnchorPane implements Observer {
@@ -42,19 +43,21 @@ public class GridView extends AnchorPane implements Observer {
     }
 
     public void search(String key){
-        generateProductViews(shoppingState.getProductRepo().findByNameContainingIgnoreCase(key), this);
+        List<Product> products = ((List<Product>)shoppingState.getProductRepo().findByNameContainingIgnoreCase(key));
+        products.addAll((List<Product>)shoppingState.getProductRepo().findAllByCategoryIgnoreCase(translate(key)));
+        generateProductViews(products, this);
     }
 
     public void searchByCategory(String category) {
-        generateProductViews(shoppingState.getProductRepo().findAllByCategory(category), this);
+        generateProductViews((List<Product>) shoppingState.getProductRepo().findAllByCategoryIgnoreCase(category), this);
     }
 
-    private void generateProductViews(Iterable<Product> products, GridView gridView){
+    private void generateProductViews(List<Product> products, GridView gridView){
         gridPane.getChildren().clear();
         Task<Void> generateProductViewsTask = new Task<Void>() {
             @Override
             protected Void call() throws Exception {
-                StreamSupport.stream(products.spliterator(), false)
+                products.stream()
                         .map(p -> {
                             int i = shoppingState.getProducts().indexOf(new ShoppingItem(p, 1));
                             if(i > 0) {

@@ -10,7 +10,7 @@ import java.util.List;
 //Use methods from crudrepo to get products from database
 public interface ProductRepo extends CrudRepository<Product, Long> {
 
-    Iterable<Product> findAllByCategory(String category);
+    Iterable<Product> findAllByCategoryIgnoreCase(String category);
 
     Iterable<Product> findByIsEcological(Boolean ecological);
 

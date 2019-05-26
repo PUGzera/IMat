@@ -39,6 +39,8 @@ public class CustomerDataHandler extends AnchorPane implements Observer {
 
     private OrderHistoryHandler orderHistoryHandler;
 
+    private CustomerContactInfoHandler customerContactInfoHandler;
+
     private ShoppingState shoppingState;
 
     private CustomerDataHandler(ShoppingState shoppingState) {
@@ -46,9 +48,11 @@ public class CustomerDataHandler extends AnchorPane implements Observer {
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
         this.shoppingState = shoppingState;
+        this.customerContactInfoHandler = new CustomerContactInfoHandler(shoppingState);
         try {
             fxmlLoader.load();
             updateActiveOrderLabel();
+            customerDataPane.getChildren().add(customerContactInfoHandler);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -62,7 +66,7 @@ public class CustomerDataHandler extends AnchorPane implements Observer {
 
 
     private void fillOrderHistoryData(){
-        orderHistoryHandler = new OrderHistoryHandler(this);
+        orderHistoryHandler = new OrderHistoryHandler(getActiveOrders());
         currentOrderPane.getChildren().addAll(orderHistoryHandler.getOrderHistories());
     }
 
@@ -72,9 +76,7 @@ public class CustomerDataHandler extends AnchorPane implements Observer {
      */
     @FXML
     public void customerDataPaneToFront(){
-        customerDataPane.getChildren().add(new CustomerContactInfoHandler(shoppingState));
         customerDataPane.toFront();
-
     }
 
     @FXML
@@ -91,7 +93,7 @@ public class CustomerDataHandler extends AnchorPane implements Observer {
     }
 
     public List<Order> getActiveOrders() {
-        return StreamSupport.stream(shoppingState.getOrderRepo().findAll().spliterator(), false)
+        return StreamSupport.stream(shoppingState.getOrderRepo().findAllByOrderByLocalDate().spliterator(), false)
                 .filter(o -> validFutureDate(o.getLocalDate()))
                 .collect(Collectors.toList());
     }
@@ -116,5 +118,6 @@ public class CustomerDataHandler extends AnchorPane implements Observer {
     public void update() {
         updateActiveOrderLabel();
         fillOrderHistoryData();
+        customerContactInfoHandler.update();
     }
 }

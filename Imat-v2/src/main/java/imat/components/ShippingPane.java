@@ -3,11 +3,12 @@ package imat.components;
 import imat.entities.ShippingInformation;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.*;
+import javafx.scene.control.skin.DatePickerSkin;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -21,7 +22,11 @@ public class ShippingPane extends AnchorPane implements Extractable<ShippingInfo
     private ComboBox<ShippingInformation.DeliveryMethod> deliveryComboBox;
 
     @FXML
-    private DatePicker deliveryDatePicker;
+    private BorderPane calendarPane;
+
+    private DatePicker deliveryDatePicker = new DatePicker(LocalDate.now());
+
+    private DatePickerSkin datePickerSkin = new DatePickerSkin(deliveryDatePicker);
 
     private static ShippingPane ourInstance = new ShippingPane();
 
@@ -35,6 +40,8 @@ public class ShippingPane extends AnchorPane implements Extractable<ShippingInfo
             root.load();
             deliveryComboBox.getItems().addAll(ShippingInformation.DeliveryMethod.HEM_LEVERANS
                     , ShippingInformation.DeliveryMethod.HÄMTA_I_BUTIK);
+            datePickerSkin.getPopupContent().prefHeight(435);
+            calendarPane.setTop(datePickerSkin.getPopupContent());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -51,10 +58,10 @@ public class ShippingPane extends AnchorPane implements Extractable<ShippingInfo
 
     private void validateDate() {
         if(deliveryDatePicker.getValue() == null || !validFutureDate(deliveryDatePicker.getValue())) {
-            deliveryDatePicker.getStyleClass().add("invalid-1");
+            datePickerSkin.getPopupContent().getStyleClass().add("invalid");
         }
         else {
-            deliveryDatePicker.getStyleClass().remove("invalid-1");
+            datePickerSkin.getPopupContent().getStyleClass().remove("invalid");
         }
     }
 

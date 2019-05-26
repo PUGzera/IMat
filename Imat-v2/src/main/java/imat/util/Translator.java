@@ -1,11 +1,13 @@
 package imat.util;
 
 import java.util.Hashtable;
+import java.util.Map;
 import java.util.Set;
+import java.util.TreeMap;
 
 public class Translator {
 
-    private Hashtable<String, String> dictionary = new Hashtable<>();
+    private Map<String, String> dictionary = new TreeMap<>(String::compareToIgnoreCase);
 
     private Translator() {
         dictionary.put("Balj", "pod");
@@ -13,7 +15,7 @@ public class Translator {
         dictionary.put("Varma drickor", "hot_drinks");
         dictionary.put("Pasta", "pasta");
         dictionary.put("Sött", "sweet");
-        dictionary.put("Mejerier","diaries");
+        dictionary.put("Mejerier","dairies");
         dictionary.put("Kål", "cabbage");
         dictionary.put("Potatis och Ris", "potato_rice");
         dictionary.put("Örter", "herb");
@@ -23,7 +25,7 @@ public class Translator {
         dictionary.put("Frukt", "fruit");
         dictionary.put("Bär", "berry");
         dictionary.put("Meloner", "melons");
-        dictionary.put("Exotiska Frukter", "exotic_fruits");
+        dictionary.put("Exotiska Frukter", "exotic_fruit");
         dictionary.put("Nötter och Frön", "nuts_and_seeds");
         dictionary.put("Citrus Frukter", "citrus_fruit");
         dictionary.put("Rot Frukter", "root_vegetable");

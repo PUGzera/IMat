@@ -10,17 +10,15 @@ import imat.state.ShoppingState;
 
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class OrderHistoryHandler {
 
     private List<Order> orders;
 
-    private CustomerDataHandler customerDataHandler;
-
-    public OrderHistoryHandler(CustomerDataHandler customerDataHandler) {
-        this.customerDataHandler = customerDataHandler;
-        orders = customerDataHandler.getActiveOrders();
+    public OrderHistoryHandler(List<Order> orders) {
+        this.orders = orders;
     }
 
     public List<OrderHistory> getOrderHistories(){

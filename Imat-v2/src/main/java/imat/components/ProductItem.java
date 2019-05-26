@@ -43,14 +43,19 @@ public class ProductItem extends AnchorPane {
             totalPriceLabel.setText("Totalt pris: " + shoppingItem.getProduct().getPrice() * shoppingItem.getAmount());
             amountTextField.setText(String.valueOf(shoppingItem.getAmount()));
             addButton.onActionProperty().setValue(e -> {
-                shoppingItem.incAmount();
-                totalPriceLabel.setText("Totalt pris: " + shoppingItem.getProduct().getPrice() * shoppingItem.getAmount());
-                amountTextField.setText(String.valueOf(shoppingItem.getAmount()));
+                if(shoppingItem.getAmount() < 20) {
+                    shoppingItem.incAmount();
+                    totalPriceLabel.setText("Totalt pris: " + shoppingItem.getProduct().getPrice() * shoppingItem.getAmount());
+                    amountTextField.setText(String.valueOf(shoppingItem.getAmount()));
+                }
             });
             removeButton.onActionProperty().setValue(e -> {
-                shoppingItem.decAmount();
-                totalPriceLabel.setText("Totalt pris: " + shoppingItem.getProduct().getPrice() * shoppingItem.getAmount());
-                amountTextField.setText(String.valueOf(shoppingItem.getAmount()));
+                if(shoppingItem.getAmount() == 1) checkoutPane.removeProductItem(this);
+                else {
+                    shoppingItem.decAmount();
+                    totalPriceLabel.setText("Totalt pris: " + shoppingItem.getProduct().getPrice() * shoppingItem.getAmount());
+                    amountTextField.setText(String.valueOf(shoppingItem.getAmount()));
+                }
             });
             deleteButton.onActionProperty().setValue(e -> checkoutPane.removeProductItem(this));
             productImage.setImage(new Image(getClass().getResource("/images/product_"+shoppingItem.getProduct().getProductId()+".jpg").toString()));

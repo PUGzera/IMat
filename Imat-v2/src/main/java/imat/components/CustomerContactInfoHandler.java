@@ -50,15 +50,14 @@ public class CustomerContactInfoHandler extends AnchorPane {
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
         this.shoppingState = shoppingState;
+        billingInformation = shoppingState.getCachedBillingInfo();
         try {
             fxmlLoader.load();
+            update();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        billingInformation = shoppingState.getCachedBillingInfo();
-        fillContactFields();
-        fillCCField();
-        fillChoiceBox();
+
     }
 
     @FXML
@@ -136,6 +135,12 @@ public class CustomerContactInfoHandler extends AnchorPane {
             return false;
         }
         return true;
+    }
+
+    public void update() {
+        fillContactFields();
+        fillCCField();
+        fillChoiceBox();
     }
 
 
