@@ -16,117 +16,123 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" stylesheets="@../css/stylesheet.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.controller.MainController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" stylesheets="@../css/stylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.controller.MainController">
    <children>
-      <BorderPane layoutX="-11.0" layoutY="-8.0">
-         <top>
-            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="184.0" prefWidth="1500.0" style="-fx-background-color: #DDDDDD;" BorderPane.alignment="CENTER">
-               <children>
-                  <ImageView onMouseClicked="#toHome" fitHeight="163.0" fitWidth="256.0" layoutX="13.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/logotest.png" />
-                     </image>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </ImageView>
-                  <Button fx:id="myPagesButton" layoutX="646.0" layoutY="72.0" mnemonicParsing="false" onAction="#toMyPage" text="  MINA SIDOR">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                     <graphic>
-                        <ImageView fitHeight="30.0" fitWidth="37.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
+      <ScrollPane prefWidth="1440" prefHeight="900">
+         <content>
+            <BorderPane>
+               <top>
+                  <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="184.0" prefWidth="1440.0" style="-fx-background-color: #DDDDDD;" BorderPane.alignment="CENTER">
+                     <children>
+                        <ImageView fitHeight="163.0" fitWidth="256.0" layoutX="13.0" layoutY="33.0" onMouseClicked="#toHome" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../images/black-user-shape.png" />
+                              <Image url="@../images/logotest.png" />
                            </image>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
                         </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button fx:id="cashOutButton" layoutX="839.0" layoutY="72.0" mnemonicParsing="false" prefHeight="44.0" onAction="#toCheckout" prefWidth="182.0" text="TILL KASSAN">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                     <graphic>
-                        <ImageView fitHeight="29.0" fitWidth="35.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/wallet.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <TextField fx:id="searchField" layoutX="260.0" layoutY="72.0" prefHeight="39.0" prefWidth="378.0" promptText="Sök efter produkt">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </TextField>
-                  <Button fx:id="searchButton" onAction="#toProductView" layoutX="518.0" layoutY="71.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="122.0" text="SÖK">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                     <graphic>
-                        <ImageView fitHeight="32.0" fitWidth="31.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/magnifier.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <ImageView fitHeight="98.0" fitWidth="128.0" layoutX="1303.0" layoutY="56.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/online-shopping-cart.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </AnchorPane>
-         </top>
-         <center>
-            <StackPane fx:id="dynamicStackPane" prefHeight="645.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
-               <BorderPane.margin>
-                  <Insets />
-               </BorderPane.margin>
-               <children>
-                  <ScrollPane fx:id="dynamicPane" hbarPolicy="NEVER" prefWidth="645.0" vbarPolicy="ALWAYS" />
-               </children>
-            </StackPane>
-         </center>
-         <left>
-            <AnchorPane prefWidth="235.0" style="-fx-background-color: #DDDDDD;" BorderPane.alignment="CENTER">
-               <children>
-                  <Accordion expandedPane="$categoryTitledPane" fx:id="menu" prefHeight="800.0" prefWidth="235.0">
-                     <panes>
-                        <TitledPane fx:id="offers" animated="false" collapsible="false" graphicTextGap="10.0" text="Erbjudanden">
+                        <Button fx:id="myPagesButton" layoutX="646.0" layoutY="72.0" mnemonicParsing="false" onAction="#toMyPage" text="  MINA SIDOR">
                            <font>
                               <Font size="20.0" />
                            </font>
-                        </TitledPane>
-                        <TitledPane fx:id="categoryTitledPane"  animated="false" text="Kategorier">
+                           <graphic>
+                              <ImageView fitHeight="30.0" fitWidth="37.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/black-user-shape.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button fx:id="cashOutButton" layoutX="839.0" layoutY="72.0" mnemonicParsing="false" onAction="#toCheckout" prefHeight="44.0" prefWidth="182.0" text="TILL KASSAN">
                            <font>
                               <Font size="20.0" />
                            </font>
-                           <content>
-                              <ListView fx:id="categoryListView" prefHeight="500.0" prefWidth="200.0" />
-                           </content>
-                        </TitledPane>
-                     </panes>
-                  </Accordion>
-               </children></AnchorPane>
-         </left>
-         <right>
-            <AnchorPane prefHeight="741.0" prefWidth="235.0" style="-fx-background-color: #DDDDDD;" BorderPane.alignment="CENTER">
-               <children>
-                  <AnchorPane fx:id="shoppingCartPane" layoutX="-2.0" layoutY="32.0" prefHeight="608.0" prefWidth="260.0" />
-                  <Label layoutX="40.0" layoutY="3.0" prefHeight="25.0" prefWidth="147.0" text="DIN VARUKORG">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Label>
-                  <Button fx:id="cashOutButton1" layoutX="20.0" layoutY="650.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="182.0" text="KASSA">
-                     <font>
-                        <Font size="31.0" />
-                     </font>
-                  </Button>
-               </children></AnchorPane>
-         </right>
-      </BorderPane>
+                           <graphic>
+                              <ImageView fitHeight="29.0" fitWidth="35.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/wallet.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <TextField fx:id="searchField" layoutX="260.0" layoutY="72.0" prefHeight="39.0" prefWidth="378.0" promptText="Sök efter produkt">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </TextField>
+                        <Button fx:id="searchButton" layoutX="518.0" layoutY="71.0" mnemonicParsing="false" onAction="#toProductView" prefHeight="34.0" prefWidth="122.0" text="SÖK">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="32.0" fitWidth="31.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/magnifier.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <ImageView fitHeight="98.0" fitWidth="128.0" layoutX="1303.0" layoutY="56.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/online-shopping-cart.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+               </top>
+               <center>
+                  <StackPane fx:id="dynamicStackPane" prefHeight="645.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
+                     <BorderPane.margin>
+                        <Insets />
+                     </BorderPane.margin>
+                     <children>
+                        <ScrollPane fx:id="dynamicPane" hbarPolicy="NEVER" prefWidth="645.0" vbarPolicy="ALWAYS" />
+                     </children>
+                  </StackPane>
+               </center>
+               <left>
+                  <AnchorPane prefWidth="180.0" style="-fx-background-color: #DDDDDD;" BorderPane.alignment="CENTER">
+                     <children>
+                        <Accordion expandedPane="$categoryTitledPane" fx:id="menu" prefHeight="716.0" prefWidth="180.0">
+                           <panes>
+                              <TitledPane fx:id="offers" onMouseClicked="#toHome" animated="false" collapsible="false" graphicTextGap="10.0" text="Tillbaka Hem">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </TitledPane>
+                              <TitledPane fx:id="categoryTitledPane" animated="false" text="Kategorier">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                                 <content>
+                                    <ListView fx:id="categoryListView" prefHeight="500.0" prefWidth="200.0" />
+                                 </content>
+                              </TitledPane>
+                           </panes>
+                        </Accordion>
+                     </children>
+                  </AnchorPane>
+               </left>
+               <right>
+                  <AnchorPane fx:id="shoppingCartPaneHolder" prefHeight="716.0" prefWidth="235.0" style="-fx-background-color: #DDDDDD;" BorderPane.alignment="CENTER">
+                     <children>
+                        <AnchorPane fx:id="shoppingCartPane" layoutX="-2.0" layoutY="32.0" prefHeight="575.0" prefWidth="235.0" />
+                        <Label layoutX="40.0" layoutY="3.0" prefHeight="25.0" prefWidth="147.0" text="DIN VARUKORG">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="cashOutButton1" layoutX="38.0" layoutY="615.0" mnemonicParsing="false" onAction="#toCheckout" prefHeight="75.0" prefWidth="182.0" text="KASSA">
+                           <font>
+                              <Font size="31.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+               </right>
+            </BorderPane>
+         </content>
+      </ScrollPane>
    </children>
 </AnchorPane>

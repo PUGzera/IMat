@@ -28,7 +28,7 @@
       </AnchorPane>
       <AnchorPane layoutY="100.0" prefHeight="100.0" prefWidth="1000.0" styleClass="selected">
          <children>
-            <ComboBox fx:id="yearComboBox" layoutX="650.0" layoutY="30.0" prefHeight="27.0" prefWidth="74.0" promptText="ÅÅ" />
+            <ComboBox fx:id="yearComboBox" layoutX="650.0" layoutY="30.0" prefHeight="27.0" prefWidth="100.0" promptText="ÅÅ" />
             <RadioButton fx:id="cardRadioButton" layoutX="14.0" layoutY="41.0" mnemonicParsing="false" selected="true" />
             <StackPane layoutX="38.0" layoutY="12.5" prefHeight="75.0" prefWidth="75.0" style="-fx-border-color: black;">
                <children>

@@ -7,6 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
 
 <fx:root prefHeight="685.0" prefWidth="1000.0" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
@@ -22,20 +23,44 @@
             <Circle fx:id="progressThreeCircle" fill="#eeeeee" layoutX="500.0" layoutY="38.0" radius="10.0" stroke="BLACK" strokeType="INSIDE" />
             <Circle fx:id="progressFourCircle" fill="#eeeeee" layoutX="650.0" layoutY="38.0" radius="10.0" stroke="BLACK" strokeType="INSIDE" />
             <Circle fx:id="progressFiveCircle" fill="#eeeeee" layoutX="800.0" layoutY="38.0" radius="10.0" stroke="BLACK" strokeType="INSIDE" />
-            <Label fx:id="taskOneLabel" layoutX="182.0" layoutY="53.0" text="Kundvagn" />
-            <Label fx:id="taskTwoLabel" layoutX="332.0" layoutY="53.0" text="Dina uppgifter" />
-            <Label fx:id="taskThreeLabel" layoutX="483.0" layoutY="53.0" text="Betalningsmetod" />
-            <Label fx:id="taskFourLabel" layoutX="632.0" layoutY="53.0" text="Leveransmetod" />
-            <Label fx:id="taskFiveLabel" layoutX="782.0" layoutY="53.0" text="Bekräftelse" />
+            <Label fx:id="taskOneLabel" layoutX="162.0" layoutY="52.0" text="Kundvagn">
+               <font>
+                  <Font size="16.0" />
+               </font></Label>
+            <Label fx:id="taskTwoLabel" layoutX="297.0" layoutY="52.0" text="Dina uppgifter">
+               <font>
+                  <Font size="16.0" />
+               </font></Label>
+            <Label fx:id="taskThreeLabel" layoutX="436.0" layoutY="52.0" text="Betalningsmetod">
+               <font>
+                  <Font size="16.0" />
+               </font></Label>
+            <Label fx:id="taskFourLabel" layoutX="592.0" layoutY="52.0" text="Leveransmetod">
+               <font>
+                  <Font size="16.0" />
+               </font></Label>
+            <Label fx:id="taskFiveLabel" layoutX="757.0" layoutY="52.0" text="Bekräftelse">
+               <font>
+                  <Font size="16.0" />
+               </font></Label>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="dynamicPane" prefHeight="535.0" prefWidth="1000.0" layoutY="75">
+      <AnchorPane fx:id="dynamicPane" layoutY="75" prefHeight="535.0" prefWidth="1000.0">
       </AnchorPane>
       <AnchorPane layoutY="610.0" prefHeight="75.0" prefWidth="1000.0" style="-fx-border-color: black">
          <children>
-            <Button fx:id="nextButton" layoutX="889.0" layoutY="25.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="95.0" text="Nästa Steg" />
-            <CheckBox fx:id="saveProductsCheckBox" layoutX="722.0" layoutY="30.0" mnemonicParsing="false" text="Spara inköpslista" />
-            <Button fx:id="prevButton" layoutX="24.0" layoutY="24.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="95.0" text="Tillbaka" />
+            <Button fx:id="nextButton" layoutX="857.0" layoutY="15.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="129.0" text="Nästa Steg">
+               <font>
+                  <Font size="16.0" />
+               </font></Button>
+            <CheckBox fx:id="saveProductsCheckBox" layoutX="677.0" layoutY="16.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="168.0" text="Spara inköpslista">
+               <font>
+                  <Font size="16.0" />
+               </font></CheckBox>
+            <Button fx:id="prevButton" layoutX="24.0" layoutY="15.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="95.0" text="Tillbaka">
+               <font>
+                  <Font size="16.0" />
+               </font></Button>
          </children>
       </AnchorPane>
    </children>
