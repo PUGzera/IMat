@@ -11,6 +11,8 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 
 import java.io.IOException;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Optional;
 
@@ -24,11 +26,19 @@ public class ShippingPane extends AnchorPane implements Extractable<ShippingInfo
     @FXML
     private BorderPane calendarPane;
 
+    @FXML
+    private Slider timeSlider;
+
+    @FXML
+    private Label timeLabel;
+
     private DatePicker deliveryDatePicker = new DatePicker(LocalDate.now());
 
     private DatePickerSkin datePickerSkin = new DatePickerSkin(deliveryDatePicker);
 
     private static ShippingPane ourInstance = new ShippingPane();
+
+    private SimpleDateFormat sdf = new SimpleDateFormat("hh:mm");
 
     private FXMLLoader root;
 
@@ -42,6 +52,13 @@ public class ShippingPane extends AnchorPane implements Extractable<ShippingInfo
                     , ShippingInformation.DeliveryMethod.HÄMTA_I_BUTIK);
             datePickerSkin.getPopupContent().prefHeight(435);
             calendarPane.setTop(datePickerSkin.getPopupContent());
+            timeSlider.setMin(0);
+            timeSlider.setMax(3600*24);
+            timeLabel.setText("00:00");
+            timeSlider.setOnMouseDragged(e -> {
+                Timestamp timestamp = new Timestamp((long) timeSlider.getValue()*1000);
+                timeLabel.setText(sdf.format(timestamp));
+            });
         } catch (IOException e) {
             e.printStackTrace();
         }
