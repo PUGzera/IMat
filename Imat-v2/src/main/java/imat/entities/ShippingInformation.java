@@ -33,7 +33,16 @@ public class ShippingInformation {
     }
 
     public enum DeliveryMethod {
-        HEM_LEVERANS, HÄMTA_I_BUTIK
+        HEM_LEVERANS, HÄMTA_I_BUTIK;
+
+        @Override
+        public String toString() {
+            switch (this) {
+                case HEM_LEVERANS: return "Hem Leverans";
+                case HÄMTA_I_BUTIK: return "Hämta i Butik";
+                default: return "Hem Leverans";
+            }
+        }
     }
 
     public boolean isValid() {

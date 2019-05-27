@@ -78,7 +78,16 @@ public class CreditCard implements PaymentMethod {
     }
 
     public enum CardType {
-        MASTER_CARD, VISA
+        MASTER_CARD, VISA;
+
+        @Override
+        public String toString() {
+            switch (this) {
+                case VISA: return "Visa";
+                case MASTER_CARD: return "Master Card";
+                default: return "Master Card";
+            }
+        }
     }
 
     @Override
