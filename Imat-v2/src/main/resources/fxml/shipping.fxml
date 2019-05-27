@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
@@ -18,7 +19,18 @@
                </children>
             </StackPane>
             <ComboBox fx:id="deliveryComboBox" layoutX="176.0" layoutY="57.0" prefHeight="42.0" prefWidth="147.0" promptText="Leverans Metod" />
-            <Label layoutX="444.0" layoutY="104.0" text="Kalender">
+            <Label layoutX="440.0" layoutY="59.0" text="Leverans Datum">
+               <font>
+                  <Font size="27.0" />
+               </font>
+            </Label>
+            <Label fx:id="timeLabel" layoutX="928.0" layoutY="94.0" text="Label">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Slider fx:id="timeSlider" layoutX="758.0" layoutY="96.0" prefHeight="16.0" prefWidth="164.0" />
+            <Label layoutX="758.0" layoutY="59.0" text="Leverans Tid">
                <font>
                   <Font size="27.0" />
                </font>
