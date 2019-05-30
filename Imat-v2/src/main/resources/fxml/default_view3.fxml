@@ -18,7 +18,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" stylesheets="@../css/stylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.controller.MainController">
    <children>
-      <ScrollPane prefWidth="1440" prefHeight="900">
+      <ScrollPane prefHeight="900" prefWidth="1440">
          <content>
             <BorderPane>
                <top>
@@ -87,16 +87,36 @@
                         <Insets />
                      </BorderPane.margin>
                      <children>
-                        <ScrollPane fx:id="dynamicPane" hbarPolicy="NEVER" prefWidth="645.0" vbarPolicy="ALWAYS" />
+                        <ScrollPane fx:id="dynamicPane" hbarPolicy="NEVER" prefWidth="645.0" vbarPolicy="ALWAYS">
+                           <AnchorPane prefHeight="698.0" prefWidth="1000.0" style="-fx-background-color: ffa64d;">
+                              <children>
+                                 <ImageView fitHeight="429.0" fitWidth="480.0" layoutX="14.0" layoutY="111.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                       <Image url="@../images/logotest.png" />
+                                    </image>
+                                 </ImageView>
+                                 <Button onAction="#toHome" fx:id="toShop" defaultButton="true" layoutX="504.0" layoutY="111.0" mnemonicParsing="false" prefHeight="191.0" prefWidth="440.0" text="BÖRJA HANDLA">
+                                    <font>
+                                       <Font size="48.0" />
+                                    </font>
+                                 </Button>
+                                 <Button onAction="#toMyPage" fx:id="myPages" layoutX="504.0" layoutY="419.0" mnemonicParsing="false" prefHeight="184.0" prefWidth="440.0" text="MINA SIDOR">
+                                    <font>
+                                       <Font size="48.0" />
+                                    </font>
+                                 </Button>
+                              </children>
+                           </AnchorPane>
+                        </ScrollPane>
                      </children>
                   </StackPane>
                </center>
                <left>
                   <AnchorPane prefWidth="180.0" style="-fx-background-color: #DDDDDD;" BorderPane.alignment="CENTER">
                      <children>
-                        <Accordion expandedPane="$categoryTitledPane" fx:id="menu" prefHeight="716.0" prefWidth="180.0">
+                        <Accordion fx:id="menu" prefHeight="716.0" prefWidth="180.0">
                            <panes>
-                              <TitledPane fx:id="offers" onMouseClicked="#toHome" animated="false" collapsible="false" graphicTextGap="10.0" text="Tillbaka Hem">
+                              <TitledPane fx:id="offers" animated="false" collapsible="false" graphicTextGap="10.0" onMouseClicked="#toHome" text="Tillbaka Hem">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
