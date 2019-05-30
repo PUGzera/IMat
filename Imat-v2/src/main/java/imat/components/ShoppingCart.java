@@ -1,12 +1,15 @@
 package imat.components;
 
+import imat.entities.ShoppingItem;
 import imat.state.Observer;
 import imat.state.ShoppingState;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ListView;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 public class ShoppingCart extends ListView<CartItem> implements Observer {
 
@@ -48,7 +51,9 @@ public class ShoppingCart extends ListView<CartItem> implements Observer {
     @Override
     public void update() {
         this.getItems().clear();
-        shoppingState.getProducts().forEach(p -> this.getItems().add(new CartItem(p, this)));
+        List<ShoppingItem> products = new ArrayList<>(shoppingState.getProducts());
+        Collections.reverse(products);
+        products.forEach(p -> this.getItems().add(new CartItem(p, this)));
     }
 
     public void deleteCartItem(CartItem cartItem) {

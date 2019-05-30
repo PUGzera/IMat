@@ -76,17 +76,16 @@ public class GridView extends AnchorPane implements Observer {
                 return null;
             }
         };
-        generateProductViewsTask.setOnSucceeded(e -> {
-            System.out.println();
-            System.out.println();
-            System.out.println();
-        });
         new Thread(generateProductViewsTask).start();
 
     }
 
     public void addProduct(ProductViewItem productViewItem){
         shoppingState.addProducts(Collections.singletonList(new ShoppingItem(productViewItem.getProduct(), 1)));
+    }
+
+    public void addProduct(ProductViewItem productViewItem, int amount){
+        shoppingState.addProduct(new ShoppingItem(productViewItem.getProduct(), amount));
     }
 
     public void removeProduct(ProductViewItem productViewItem){

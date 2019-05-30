@@ -69,7 +69,6 @@ public class MainController {
 
     @FXML
     private void initialize() throws IOException {
-        System.out.println(productRepo.findByName("Mjölk").getCategory());
         observable = new ShoppingState(orderRepo, productRepo);
         customerDataHandler = CustomerDataHandler.getInstance(observable);
         wizard = Wizard.getInstance(observable, this);
@@ -82,7 +81,6 @@ public class MainController {
                 .collect(Collectors.toList()));
         initCategoryTitledPane();
         initSearchPane();
-        loadPage();
     }
 
     private void initSearchPane() {
@@ -111,7 +109,6 @@ public class MainController {
         shoppingCartPaneHolder.setVisible(true);
         switch (page) {
             case HOME:
-                gridView.search("");
                 dynamicPane.setContent(gridView);
                 break;
             case WIZARD:
@@ -136,6 +133,7 @@ public class MainController {
 
     @FXML
     public void toHome() {
+        gridView.search("");
         page = Page.PRODUCT_VIEW;
         loadPage();
     }

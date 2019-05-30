@@ -156,7 +156,7 @@ public class Wizard extends AnchorPane implements Observer {
         Task<Void> task = new Task<Void>() {
             @Override
             protected Void call() throws Exception {
-                Thread.sleep(5000);
+                Thread.sleep(1000);
                 return null;
             }
         };
@@ -181,6 +181,9 @@ public class Wizard extends AnchorPane implements Observer {
 
     @FXML
     private void checkTask(){
+        if(observable.getCurrentState() == ShoppingState.State.CONFIRMATION)
+            nextButton.setText("Bekräfta");
+        else nextButton.setText("Nästa Steg");
         switch (observable.getCurrentState()) {
             case CHECKOUT:
                 System.out.println("checkout");

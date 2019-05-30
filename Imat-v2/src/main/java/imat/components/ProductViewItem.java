@@ -56,7 +56,9 @@ public class ProductViewItem extends AnchorPane {
                 if (!nv.matches("\\d*")
                 || Integer.valueOf(nv) < 0
                 || Integer.valueOf(nv) > 21)
-                    quantityFieldListView.setText(nv.replaceAll(nv, "1"));
+                    quantityFieldListView.setText(nv.replaceAll(nv, ov));
+                else if (!nv.isEmpty())
+                    gridView.addProduct(this, Integer.valueOf(nv));
             });
         } catch (IOException e) {
             e.printStackTrace();

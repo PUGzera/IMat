@@ -69,6 +69,13 @@ public class ShoppingState implements Observable {
         notifyObservers();
     }
 
+    public void addProduct(ShoppingItem shoppingItem) {
+        products.remove(shoppingItem);
+        if(shoppingItem.getAmount() > 0)
+            products.add(shoppingItem);
+        notifyObservers();
+    }
+
     public void removeProducts(List<ShoppingItem> products) {
         products.stream()
                 .filter(p -> this.products.contains(p))
