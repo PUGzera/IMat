@@ -1,9 +1,6 @@
 package imat.controller;
 
-import imat.components.CustomerDataHandler;
-import imat.components.GridView;
-import imat.components.ShoppingCart;
-import imat.components.Wizard;
+import imat.components.*;
 import imat.entities.OrderRepo;
 import imat.entities.Product;
 import imat.entities.ProductRepo;

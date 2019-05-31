@@ -8,7 +8,7 @@ import imat.entities.Order;
 import imat.state.ShoppingState;
 
 
-
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -62,6 +62,7 @@ public class OrderHistoryHandler {
     public List<OrderHistoryItem> createOrderHistoryItemList(int index){
         Order order = orders.get(index);
         List<OrderHistoryItem> orderItems = new ArrayList<>();
+        DecimalFormat df = new DecimalFormat("#.00");
 
         OrderHistoryItem detailLabel = new OrderHistoryItem();
         detailLabel.getProductNameLabel().setStyle("-fx-font-weight: bold");
@@ -72,11 +73,12 @@ public class OrderHistoryHandler {
         orderItems.add(detailLabel);
 
         order.getMap().forEach((k,v) -> {
+            String price = df.format(v * k.getPrice());
             OrderHistoryItem orderHistoryItem = new OrderHistoryItem();
             orderHistoryItem.setProductNameLabel(k.getName());
             orderHistoryItem.setUnitPriceLabel(k.getPrice() + k.getUnit());
-            orderHistoryItem.setAmountLabel(String.valueOf(v));
-            orderHistoryItem.setTotalSumLabel(v * k.getPrice() + "kr");
+            orderHistoryItem.setAmountLabel("          " + v);
+            orderHistoryItem.setTotalSumLabel(price + "kr");
             orderItems.add(orderHistoryItem);
         });
         return orderItems;

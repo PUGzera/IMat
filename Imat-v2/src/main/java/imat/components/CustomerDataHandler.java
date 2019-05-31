@@ -5,6 +5,7 @@ import imat.entities.Order;
 import imat.state.Observer;
 import imat.state.ShoppingState;
 import imat.util.OrderHistoryHandler;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
@@ -27,7 +28,7 @@ public class CustomerDataHandler extends AnchorPane implements Observer {
     @FXML Button orderHistoryBtn;
     @FXML Button customerDataBtn;
 
-    @FXML AnchorPane shoppingListPane;
+//    @FXML AnchorPane shoppingListPane;
     @FXML AnchorPane customerDataPane;
     @FXML AnchorPane orderHistoryPane;
     @FXML AnchorPane customerDataHandlingPane;
@@ -67,7 +68,13 @@ public class CustomerDataHandler extends AnchorPane implements Observer {
 
     private void fillOrderHistoryData(){
         orderHistoryHandler = new OrderHistoryHandler(getActiveOrders());
-        currentOrderPane.getChildren().addAll(orderHistoryHandler.getOrderHistories());
+        Platform.runLater( () -> currentOrderPane.getChildren().addAll(orderHistoryHandler.getOrderHistories()));
+    }
+
+    public void fillOrderTask(){
+        Thread backgroundThread = new Thread(this::fillOrderHistoryData);
+        backgroundThread.setDaemon(true);
+        backgroundThread.start();
     }
 
 
@@ -82,10 +89,17 @@ public class CustomerDataHandler extends AnchorPane implements Observer {
     @FXML
     public void orderHistoryToFront(){
         if(orderHistoryHandler==null){
-            fillOrderHistoryData();
+            fillOrderTask();
         }
         orderHistoryPane.toFront();
     }
+
+//    @FXML
+//    public void shoppingListToFront(){
+////        innerShopingVBox.getChildren().add(new SavedList(this.shoppingState));
+//        shoppingListPane.toFront();
+//    }
+
 
     private void updateActiveOrderLabel(){
         long activeOrderCount = getActiveOrders().size();
@@ -98,10 +112,7 @@ public class CustomerDataHandler extends AnchorPane implements Observer {
                 .collect(Collectors.toList());
     }
 
-    @FXML
-    public void shoppingListToFront(){
-        shoppingListPane.toFront();
-    }
+
 
 
     @Override

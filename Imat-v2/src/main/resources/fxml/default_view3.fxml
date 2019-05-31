@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" stylesheets="@../css/stylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.controller.MainController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" stylesheets="@../css/stylesheet.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.controller.MainController">
    <children>
       <ScrollPane prefHeight="900" prefWidth="1440">
          <content>
@@ -88,19 +88,19 @@
                      </BorderPane.margin>
                      <children>
                         <ScrollPane fx:id="dynamicPane" hbarPolicy="NEVER" prefWidth="645.0" vbarPolicy="ALWAYS">
-                           <AnchorPane prefHeight="698.0" prefWidth="1000.0" style="-fx-background-color: ffa64d;">
+                           <AnchorPane prefHeight="698.0" prefWidth="1000.0" style="-fx-background-color: ffa64d;" styleClass="startView" stylesheets="@../css/start_view.css">
                               <children>
                                  <ImageView fitHeight="429.0" fitWidth="480.0" layoutX="14.0" layoutY="111.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
                                        <Image url="@../images/logotest.png" />
                                     </image>
                                  </ImageView>
-                                 <Button onAction="#toHome" fx:id="toShop" defaultButton="true" layoutX="504.0" layoutY="111.0" mnemonicParsing="false" prefHeight="191.0" prefWidth="440.0" text="BÖRJA HANDLA">
+                                 <Button fx:id="toShop" defaultButton="true" layoutX="504.0" layoutY="111.0" mnemonicParsing="false" onAction="#toHome" prefHeight="191.0" prefWidth="440.0" text="BÖRJA HANDLA">
                                     <font>
                                        <Font size="48.0" />
                                     </font>
                                  </Button>
-                                 <Button onAction="#toMyPage" fx:id="myPages" layoutX="504.0" layoutY="419.0" mnemonicParsing="false" prefHeight="184.0" prefWidth="440.0" text="MINA SIDOR">
+                                 <Button fx:id="myPages" layoutX="504.0" layoutY="419.0" mnemonicParsing="false" onAction="#toMyPage" prefHeight="184.0" prefWidth="440.0" text="MINA SIDOR">
                                     <font>
                                        <Font size="48.0" />
                                     </font>
