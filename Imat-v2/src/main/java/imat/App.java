@@ -18,6 +18,8 @@ import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 
+import java.util.Properties;
+
 
 @SpringBootApplication
 public class App extends Application {
@@ -26,9 +28,17 @@ public class App extends Application {
 
     @Override
     public void init() throws Exception {
-        ConfigurableApplicationContext applicationContext = new SpringApplicationBuilder(getClass()).web(WebApplicationType.NONE).run();
+        SpringApplication applicationContext = new SpringApplicationBuilder(getClass()).web(WebApplicationType.NONE).build();
+        Properties properties = new Properties();
+        properties.setProperty("spring.jpa.hibernate.ddl-auto","update");
+        properties.setProperty("spring.datasource.driverClassName", "org.h2.Driver");
+        properties.setProperty("spring.datasource.password", "test");
+        properties.setProperty("spring.datasource.username", "test");
+        properties.setProperty("spring.datasource.url", "jdbc:h2:file:./db;DB_CLOSE_ON_EXIT=FALSE");
+        applicationContext.setDefaultProperties(properties);
+        ConfigurableApplicationContext context = applicationContext.run();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/default_view3.fxml"));
-        fxmlLoader.setControllerFactory(applicationContext::getBean);
+        fxmlLoader.setControllerFactory(context::getBean);
         root = fxmlLoader.load();
     }
 
