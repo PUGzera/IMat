@@ -2,6 +2,7 @@ plugins {
     id 'java'
     id 'application'
     id 'org.openjfx.javafxplugin' version '0.0.7'
+    id "com.github.johnrengelman.shadow" version "4.0.2"
 }
 
 group 'pugzera'
@@ -28,7 +29,21 @@ dependencies {
     compile group: 'org.hibernate', name: 'hibernate-core', version: '5.4.2.Final'
     compile group: 'org.hibernate', name: 'hibernate-validator', version: '5.4.2.Final'
     compile group: 'com.h2database', name: 'h2', version: '1.4.199'
+    compile group: 'org.hibernate', name: 'hibernate-search-orm', version: '5.11.1.Final'
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
 
-mainClassName = 'imat.App'
+mainClassName = 'imat.Main'
+
+shadowJar {
+    mergeServiceFiles()
+}
+
+jar {
+    manifest {
+        attributes('Main-Class': mainClassName)
+    }
+    dependsOn(shadowJar)
+}
+
+jar.enabled = false
