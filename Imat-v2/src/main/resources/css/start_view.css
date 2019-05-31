@@ -1,0 +1,7 @@
+.startButtons{
+    -fx-font-size: 28 ;
+    -fx-alignment: center;
+    -fx-pref-height: 65;
+    -fx-background-radius: 25 ;
+    -fx-border-radius: 25;
+}

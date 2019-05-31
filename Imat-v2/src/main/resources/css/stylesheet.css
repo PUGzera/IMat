@@ -4,31 +4,31 @@
     -fx-cursor: hand;
 }
 
-.button {
-    -fx-font-size: 28 ;
-    -fx-alignment: center;
-    -fx-pref-height: 65;
-    -fx-background-radius: 25 ;
-    -fx-border-radius: 25;
+/*.button {*/
+/*    -fx-font-size: 28 ;*/
+/*    -fx-alignment: center;*/
+/*    -fx-pref-height: 65;*/
+/*    -fx-background-radius: 25 ;*/
+/*    -fx-border-radius: 25;*/
 
-}
-.label{
-    -fx-font-size: 19;
-}
-.text-field{
-    -fx-font-size: 15;
-    -fx-pref-height: 37;}
+/*}*/
+/*.label{*/
+/*    -fx-font-size: 19;*/
+/*}*/
+/*.text-field{*/
+/*    -fx-font-size: 15;*/
+/*    -fx-pref-height: 37;}*/
 
-#searchField{
-    -fx-font-size: 20;
-    -fx-pref-height: 65;
-    -fx-background-radius: 25 ;
-    -fx-border-radius: 25;
-}
+/*#searchField{*/
+/*    -fx-font-size: 20;*/
+/*    -fx-pref-height: 65;*/
+/*    -fx-background-radius: 25 ;*/
+/*    -fx-border-radius: 25;*/
+/*}*/
 
-#saveCardBtn         { -fx-font-size: 17}
-#saveCustomerDataBtn { -fx-font-size: 17}
-#makePrimaryBtn      { -fx-font-size: 17}
-#removeCardBtn       { -fx-font-size: 17}
+/*#saveCardBtn         { -fx-font-size: 14}*/
+/*#saveCustomerDataBtn { -fx-font-size: 14}*/
+/*#makePrimaryBtn      { -fx-font-size: 14}*/
+/*#removeCardBtn       { -fx-font-size: 14}*/
 
 

@@ -40,8 +40,11 @@ public class OrderHistoryHandler {
         sb.append(orders.get(index).getId());
         sb.append(emptySpace());
 
+        sb.append("                            ");
+
         sb.append(getAmountOfProducts(index));
         sb.append(emptySpace());
+        sb.append("               ");
 
         sb.append(getTotalForShoppingList(index)).append("kr");
         return sb.toString();

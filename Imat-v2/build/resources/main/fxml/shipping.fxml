@@ -1,30 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<fx:root maxWidth="1000" prefHeight="495" prefWidth="1000" styleClass="task" stylesheets="@/css/task.css" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxWidth="1000" prefHeight="535" prefWidth="1000" styleClass="task" stylesheets="@/css/task.css" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <AnchorPane prefHeight="100.0" prefWidth="1000.0" styleClass="selected">
+      <AnchorPane prefHeight="151.0" prefWidth="1000.0" styleClass="selected">
          <children>
-            <StackPane layoutX="38.0" layoutY="12.5" prefHeight="75.0" prefWidth="75.0" style="-fx-border-color: black;">
+            <StackPane layoutX="10.0" layoutY="13.0" prefHeight="128.0" prefWidth="128.0" style="-fx-border-color: black;">
                <children>
-                  <ImageView fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fitHeight="128.0" fitWidth="128.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </StackPane>
-            <DatePicker fx:id="deliveryDatePicker" layoutX="319.0" layoutY="43.0" />
-            <Label layoutX="319.0" layoutY="12.0" text="Välj datum for leverans">
+            <ComboBox fx:id="deliveryComboBox" layoutX="176.0" layoutY="57.0" prefHeight="42.0" prefWidth="147.0" promptText="Leverans Metod" />
+            <Label layoutX="440.0" layoutY="59.0" text="Leverans Datum">
+               <font>
+                  <Font size="27.0" />
+               </font>
+            </Label>
+            <Label fx:id="timeLabel" layoutX="928.0" layoutY="94.0" text="Label">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <ComboBox fx:id="deliveryComboBox" layoutX="142.0" layoutY="43.0" prefHeight="27.0" prefWidth="147.0" promptText="Leverans Metod" />
+            <Slider fx:id="timeSlider" layoutX="758.0" layoutY="96.0" prefHeight="16.0" prefWidth="164.0" />
+            <Label layoutX="758.0" layoutY="59.0" text="Leverans Tid">
+               <font>
+                  <Font size="27.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
+      <BorderPane fx:id="calendarPane" layoutY="151.0" prefHeight="383.0" prefWidth="1000.0" />
    </children>
 </fx:root>

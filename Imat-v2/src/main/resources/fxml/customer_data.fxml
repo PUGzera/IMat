@@ -167,84 +167,87 @@
                 </ScrollPane>
             </children>
         </AnchorPane>
-        <AnchorPane fx:id="customerDataPane" layoutY="100.0" prefHeight="645.0" prefWidth="1000.0" style="-fx-background-color: #808080;">
+        <AnchorPane fx:id="customerDataPane" layoutY="100.0" prefHeight="645.0" prefWidth="1000.0" style="-fx-background-color: #808080;" styleClass="button_about" stylesheets="@../css/stylesheet.css">
             <children>
                 <Separator layoutX="500.0" orientation="VERTICAL" prefHeight="645.0" prefWidth="10.0" />
-                <Separator layoutX="502.0" layoutY="322.0" prefWidth="498.0" />
-                <Label layoutX="680.0" layoutY="350.0" text="Sparade Kontokort">
+                <Separator layoutX="506.0" layoutY="303.0" prefWidth="498.0" />
+                <Label layoutX="679.0" layoutY="312.0" text="Sparade Kontokort">
                     <font>
                         <Font size="19.0" />
                     </font>
                 </Label>
-                <Label layoutX="27.0" layoutY="30.0" text="Personnummer">
+                <Label layoutX="37.0" layoutY="14.0" text="Personnummer">
                     <font>
                         <Font size="18.0" />
                     </font>
                 </Label>
-                <Label layoutX="28.0" layoutY="108.0" text="Leveransadress">
+                <Label layoutX="38.0" layoutY="92.0" text="Leveransadress">
                     <font>
                         <Font size="18.0" />
                     </font>
                 </Label>
-                <Label layoutX="28.0" layoutY="270.0" text="E-post">
+                <Label layoutX="38.0" layoutY="254.0" text="E-post">
                     <font>
                         <Font size="18.0" />
                     </font>
                 </Label>
-                <Label layoutX="28.0" layoutY="352.0" text="Mobiltelefon">
+                <Label layoutX="39.0" layoutY="337.0" text="Mobiltelefon">
                     <font>
                         <Font size="18.0" />
                     </font>
                 </Label>
-                <Label layoutX="28.0" layoutY="435.0" text="Ändra Lösenord">
+                <Label layoutX="38.0" layoutY="419.0" text="Ändra Lösenord">
                     <font>
                         <Font size="18.0" />
                     </font>
                 </Label>
-                <TextField layoutX="28.0" layoutY="57.0" prefHeight="30.0" prefWidth="190.0" promptText="Personnummer" />
-                <TextField layoutX="28.0" layoutY="138.0" prefHeight="30.0" prefWidth="190.0" promptText="Förnamn" />
-                <TextField layoutX="233.0" layoutY="138.0" prefHeight="30.0" prefWidth="190.0" promptText="Efternamn" />
-                <TextField layoutX="28.0" layoutY="182.0" prefHeight="30.0" prefWidth="395.0" promptText="Gatuadress" />
-                <TextField layoutX="28.0" layoutY="223.0" prefHeight="30.0" prefWidth="190.0" promptText="Postkod" />
-                <TextField layoutX="233.0" layoutY="223.0" prefHeight="30.0" prefWidth="190.0" promptText="Postort" />
-                <TextField layoutX="28.0" layoutY="305.0" prefHeight="30.0" prefWidth="190.0" promptText="E-post" />
-                <TextField layoutX="233.0" layoutY="305.0" prefHeight="30.0" prefWidth="190.0" promptText="Repetera E-post" />
-                <TextField layoutX="28.0" layoutY="383.0" prefHeight="30.0" prefWidth="190.0" promptText="Mobiltelefon" />
-                <PasswordField layoutX="28.0" layoutY="471.0" prefHeight="30.0" prefWidth="190.0" promptText="Välj lösenord" />
-                <PasswordField layoutX="233.0" layoutY="471.0" prefHeight="30.0" prefWidth="190.0" promptText="Repetera Lösenord" />
-                <Button layoutX="28.0" layoutY="526.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="395.0" text="Spara Uppgifter">
+                <TextField layoutX="38.0" layoutY="41.0" prefHeight="30.0" prefWidth="190.0" promptText="Personnummer" />
+                <TextField layoutX="38.0" layoutY="122.0" prefHeight="30.0" prefWidth="190.0" promptText="Förnamn" />
+                <TextField layoutX="243.0" layoutY="122.0" prefHeight="30.0" prefWidth="190.0" promptText="Efternamn" />
+                <TextField layoutX="38.0" layoutY="166.0" prefHeight="30.0" prefWidth="395.0" promptText="Gatuadress" />
+                <TextField layoutX="38.0" layoutY="210.0" prefHeight="30.0" prefWidth="190.0" promptText="Postkod" />
+                <TextField layoutX="243.0" layoutY="210.0" prefHeight="30.0" prefWidth="190.0" promptText="Postort" />
+                <TextField layoutX="38.0" layoutY="289.0" prefHeight="30.0" prefWidth="190.0" promptText="E-post" />
+                <TextField layoutX="243.0" layoutY="289.0" prefHeight="30.0" prefWidth="190.0" promptText="Repetera E-post" />
+                <TextField layoutX="38.0" layoutY="367.0" prefHeight="30.0" prefWidth="190.0" promptText="Mobiltelefon" />
+                <PasswordField layoutX="38.0" layoutY="455.0" prefHeight="30.0" prefWidth="190.0" promptText="Välj lösenord" />
+                <PasswordField layoutX="243.0" layoutY="455.0" prefHeight="30.0" prefWidth="190.0" promptText="Repetera Lösenord" />
+                <Button id="saveCustomerDataBtn" layoutX="46.0" layoutY="507.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="395.0" styleClass="button_about" text="Spara Uppgifter">
                     <font>
                         <Font name="System Bold" size="12.0" />
-                    </font></Button>
+                    </font>
+            </Button>
                 <TextField layoutX="571.0" layoutY="60.0" prefHeight="37.0" prefWidth="370.0" promptText="Fullständigt namn på kort" />
                 <TextField layoutX="571.0" layoutY="109.0" prefHeight="37.0" prefWidth="370.0" promptText="Kortnummer" />
                 <TextField layoutX="571.0" layoutY="157.0" prefHeight="37.0" prefWidth="67.0" promptText="MM" />
                 <TextField layoutX="644.0" layoutY="157.0" prefHeight="37.0" prefWidth="67.0" promptText="YY" />
                 <TextField layoutX="720.0" layoutY="157.0" prefHeight="37.0" prefWidth="221.0" promptText="CVV2" />
-                <Button layoutX="661.0" layoutY="225.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="158.0" text="Spara Kortuppgifter">
+                <Button id="saveCardBtn" layoutX="661.0" layoutY="210.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="248.0" styleClass="button_about" stylesheets="@../css/stylesheet.css" text="Spara Kortuppgifter">
                     <font>
                         <Font name="System Bold" size="12.0" />
-                    </font></Button>
+                    </font>
+            </Button>
                 <Label layoutX="700.0" layoutY="25.0" text="Kreditkort">
                     <font>
                         <Font size="18.0" />
                     </font>
                 </Label>
-                <ChoiceBox layoutX="680.0" layoutY="391.0" prefWidth="150.0" />
-                <TextField layoutX="572.0" layoutY="443.0" prefHeight="37.0" prefWidth="370.0" promptText="Fullständigt namn på kort" />
-                <TextField layoutX="570.0" layoutY="491.0" prefHeight="37.0" prefWidth="370.0" promptText="Kortnummer" />
-                <TextField layoutX="572.0" layoutY="540.0" prefHeight="37.0" prefWidth="67.0" promptText="MM" />
-                <TextField layoutX="645.0" layoutY="540.0" prefHeight="37.0" prefWidth="67.0" promptText="YY" />
-                <TextField layoutX="721.0" layoutY="540.0" prefHeight="37.0" prefWidth="221.0" promptText="CVV2" />
-                <Button layoutX="570.0" layoutY="593.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="190.0" text="Gör till primärt Kontokort">
+                <ChoiceBox layoutX="679.0" layoutY="353.0" prefWidth="150.0" />
+                <TextField layoutX="571.0" layoutY="405.0" prefHeight="37.0" prefWidth="370.0" promptText="Fullständigt namn på kort" />
+                <TextField layoutX="569.0" layoutY="453.0" prefHeight="37.0" prefWidth="370.0" promptText="Kortnummer" />
+                <TextField layoutX="571.0" layoutY="502.0" prefHeight="37.0" prefWidth="67.0" promptText="MM" />
+                <TextField layoutX="644.0" layoutY="502.0" prefHeight="37.0" prefWidth="67.0" promptText="YY" />
+                <TextField layoutX="720.0" layoutY="502.0" prefHeight="37.0" prefWidth="221.0" promptText="CVV2" />
+                <Button layoutX="569.0" layoutY="555.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="197.0" styleClass="button_about" text="Gör till primärt Kontokort">
                     <font>
                         <Font name="System Bold" size="12.0" />
                     </font>
                 </Button>
-                <Button layoutX="811.0" layoutY="593.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="127.0" text="Ta bort kontokort">
+                <Button id="removeCardBtn" layoutX="780.0" layoutY="555.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="158.0" styleClass="button_about" text="Ta bort kontokort">
                     <font>
                         <Font name="System Bold" size="12.0" />
-                    </font></Button>
+                    </font>
+            </Button>
             </children>
         </AnchorPane>
     </children>

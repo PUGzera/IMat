@@ -8,5 +8,5 @@
 
 <fx:root type="javafx.scene.control.ListView" xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            prefHeight="608.0" prefWidth="260.0">
+            prefHeight="575.0" prefWidth="260.0">
 </fx:root>

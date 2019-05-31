@@ -9,32 +9,74 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.TextFlow?>
 
-<fx:root maxWidth="1000" prefHeight="495" prefWidth="1000" styleClass="task" stylesheets="@/css/task.css" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxWidth="1000" prefHeight="535" prefWidth="1000" styleClass="task" stylesheets="@/css/task.css" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane prefHeight="100.0" prefWidth="1000.0" styleClass="selected">
          <children>
-            <Label layoutX="337.0" layoutY="26.0" text="Order Bekräftelse">
+            <Label layoutX="337.0" layoutY="26.0" text="Bekräfta ditt köp">
                <font>
                   <Font size="39.0" />
                </font>
             </Label>
          </children>
       </AnchorPane>
-      <Separator layoutX="497.0" layoutY="100.0" orientation="VERTICAL" prefHeight="395.0" prefWidth="3.0" />
-      <TextField fx:id="emailTextField" editable="false" layoutX="14.0" layoutY="157.0" promptText="exempel@address" />
-      <TextField fx:id="phoneTextField" editable="false" layoutX="14.0" layoutY="227.0" promptText="07X-XXX XX XX" />
-      <TextField fx:id="ssnTextField" editable="false" layoutX="14.0" layoutY="297.0" promptText="ÅÅÅÅ-MM-DD-XXXX" />
-      <TextField fx:id="fnTextField" editable="false" layoutX="14.0" layoutY="367.0" prefHeight="26.0" prefWidth="130.0" />
-      <TextField fx:id="lnTextField" editable="false" layoutX="185.0" layoutY="367.0" prefHeight="26.0" prefWidth="130.0" />
-      <TextField fx:id="addressTextField" editable="false" layoutX="14.0" layoutY="437.0" prefHeight="26.0" prefWidth="130.0" />
-      <TextField fx:id="zipTextField" editable="false" layoutX="185.0" layoutY="437.0" prefHeight="26.0" prefWidth="130.0" promptText="XXX XX" />
-      <Label layoutX="14.0" layoutY="132.0" text="E-Post" />
-      <Label layoutX="17.0" layoutY="202.0" text="Mobil (Frivilligt)" />
-      <Label layoutX="17.0" layoutY="272.0" text="Personnummer" />
-      <Label layoutX="17.0" layoutY="342.0" text="Förnamn" />
-      <Label layoutX="185.0" layoutY="342.0" text="Efternamn" />
-      <Label layoutX="17.0" layoutY="412.0" text="Address" />
-      <Label layoutX="185.0" layoutY="412.0" text="Postnummer" />
+      <Separator layoutX="497.0" layoutY="100.0" orientation="VERTICAL" prefHeight="435.0" prefWidth="3.0" />
+      <TextField fx:id="emailTextField" editable="false" layoutX="14.0" layoutY="157.0" promptText="exempel@address">
+         <font>
+            <Font size="16.0" />
+         </font></TextField>
+      <TextField fx:id="phoneTextField" editable="false" layoutX="14.0" layoutY="227.0" promptText="07X-XXX XX XX">
+         <font>
+            <Font size="16.0" />
+         </font></TextField>
+      <TextField fx:id="ssnTextField" editable="false" layoutX="14.0" layoutY="297.0" promptText="ÅÅÅÅ-MM-DD-XXXX">
+         <font>
+            <Font size="16.0" />
+         </font></TextField>
+      <TextField fx:id="fnTextField" editable="false" layoutX="14.0" layoutY="367.0" prefHeight="26.0" prefWidth="130.0">
+         <font>
+            <Font size="16.0" />
+         </font></TextField>
+      <TextField fx:id="lnTextField" editable="false" layoutX="185.0" layoutY="367.0" prefHeight="26.0" prefWidth="130.0">
+         <font>
+            <Font size="16.0" />
+         </font></TextField>
+      <TextField fx:id="addressTextField" editable="false" layoutX="14.0" layoutY="437.0" prefHeight="26.0" prefWidth="130.0">
+         <font>
+            <Font size="16.0" />
+         </font></TextField>
+      <TextField fx:id="zipTextField" editable="false" layoutX="185.0" layoutY="437.0" prefHeight="26.0" prefWidth="130.0" promptText="XXX XX">
+         <font>
+            <Font size="16.0" />
+         </font></TextField>
+      <Label layoutX="14.0" layoutY="132.0" text="E-Post">
+         <font>
+            <Font size="16.0" />
+         </font></Label>
+      <Label layoutX="17.0" layoutY="202.0" text="Mobil (Frivilligt)">
+         <font>
+            <Font size="16.0" />
+         </font></Label>
+      <Label layoutX="17.0" layoutY="272.0" text="Personnummer">
+         <font>
+            <Font size="16.0" />
+         </font></Label>
+      <Label layoutX="17.0" layoutY="342.0" text="Förnamn">
+         <font>
+            <Font size="16.0" />
+         </font></Label>
+      <Label layoutX="185.0" layoutY="342.0" text="Efternamn">
+         <font>
+            <Font size="16.0" />
+         </font></Label>
+      <Label layoutX="17.0" layoutY="412.0" text="Address">
+         <font>
+            <Font size="16.0" />
+         </font></Label>
+      <Label layoutX="185.0" layoutY="412.0" text="Postnummer">
+         <font>
+            <Font size="16.0" />
+         </font></Label>
       <Label layoutX="180.0" layoutY="103.0" text="Dina Uppgifter">
          <font>
             <Font size="24.0" />
@@ -45,7 +87,7 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <Label fx:id="paymentMethodLabel" layoutX="658.0" layoutY="144.0" text="Betalnings Metod">
+      <Label fx:id="paymentMethodLabel" layoutX="659.0" layoutY="144.0" text="Betalnings Metod">
          <font>
             <Font size="20.0" />
          </font>

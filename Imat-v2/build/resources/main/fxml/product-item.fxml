@@ -35,7 +35,7 @@
       <HBox layoutX="150.0" layoutY="71.0" prefHeight="28.0" prefWidth="160.0" spacing="10.0">
          <children>
             <Button fx:id="removeButton" mnemonicParsing="false" text="-" />
-            <TextField fx:id="amountTextField" prefHeight="27.0" prefWidth="89.0" text="0" />
+            <TextField editable="false" fx:id="amountTextField" prefHeight="27.0" prefWidth="89.0" text="0" />
             <Button fx:id="addButton" mnemonicParsing="false" text="+" />
          </children>
       </HBox>

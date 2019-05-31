@@ -1,6 +1,5 @@
 package imat.entities;
 
-import javax.persistence.Entity;
 import java.time.LocalDate;
 
 import static imat.validators.FormValidators.validFutureDate;
@@ -33,13 +32,13 @@ public class ShippingInformation {
     }
 
     public enum DeliveryMethod {
-        HEM_LEVERANS, HÄMTA_I_BUTIK;
+        HEM_LEVERANS, GET_IN_STORE;
 
         @Override
         public String toString() {
             switch (this) {
                 case HEM_LEVERANS: return "Hem Leverans";
-                case HÄMTA_I_BUTIK: return "Hämta i Butik";
+                case GET_IN_STORE: return "Hämta i Butik";
                 default: return "Hem Leverans";
             }
         }

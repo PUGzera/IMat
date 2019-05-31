@@ -101,5 +101,10 @@ public class CreditCard implements PaymentMethod {
         }
         else return false;
     }
+
+    @Override
+    public String toString() {
+        return getCardNumber();
+    }
 }
 

@@ -7,8 +7,6 @@ import javafx.scene.control.*;
 import javafx.scene.control.skin.DatePickerSkin;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
 
 import java.io.IOException;
 import java.sql.Timestamp;
@@ -49,7 +47,7 @@ public class ShippingPane extends AnchorPane implements Extractable<ShippingInfo
         try {
             root.load();
             deliveryComboBox.getItems().addAll(ShippingInformation.DeliveryMethod.HEM_LEVERANS
-                    , ShippingInformation.DeliveryMethod.HÄMTA_I_BUTIK);
+                    , ShippingInformation.DeliveryMethod.GET_IN_STORE);
             datePickerSkin.getPopupContent().prefHeight(435);
             calendarPane.setTop(datePickerSkin.getPopupContent());
             timeSlider.setMin(0);

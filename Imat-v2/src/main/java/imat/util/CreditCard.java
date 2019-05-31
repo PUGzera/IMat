@@ -91,5 +91,9 @@ public class CreditCard implements PaymentMethod {
         MASTER_CARD, VISA
     }
 
+    @Override
+    public String toString() {
+        return cardNumber;
+    }
 }
 
