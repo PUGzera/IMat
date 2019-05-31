@@ -2,16 +2,18 @@ package imat.state;
 
 import com.google.gson.Gson;
 import imat.entities.*;
-import org.springframework.stereotype.Component;
-import se.chalmers.cse.dat216.project.Customer;
 
 import java.io.IOException;
+import java.net.URI;
 import java.net.URISyntaxException;
+import java.nio.file.FileSystem;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.*;
 import java.util.stream.Collectors;
+
+import static imat.util.FileSystem.initFileSystem;
 
 public class ShoppingState implements Observable {
 
@@ -207,8 +209,11 @@ public class ShoppingState implements Observable {
 
     public void cacheProducts() {
         try {
-            Files.write(Paths.get(getClass().getClassLoader().getResource("cache/shopping-items.json").toURI())
+            URI uri = getClass().getClassLoader().getResource("cache/shopping-items.json").toURI();
+            FileSystem zipfs = initFileSystem(uri);
+            Files.write(Paths.get(uri)
                     , Collections.singleton(new Gson().toJson(getProducts())), StandardOpenOption.APPEND);
+            zipfs.close();
         } catch (IOException | URISyntaxException e) {
             e.printStackTrace();
         }
@@ -217,8 +222,11 @@ public class ShoppingState implements Observable {
     public void cachePaymentInfo() {
         if (paymentMethod instanceof CreditCard && !getCachedPaymentInfo().contains(paymentMethod)) {
             try {
-                Files.write(Paths.get(getClass().getClassLoader().getResource("cache/payment-info.json").toURI())
+                URI uri = getClass().getClassLoader().getResource("cache/payment-info.json").toURI();
+                FileSystem zipfs = initFileSystem(uri);
+                Files.write(Paths.get(uri)
                         , Collections.singleton(new Gson().toJson(getPaymentMethod())), StandardOpenOption.APPEND);
+                zipfs.close();
             } catch (IOException | URISyntaxException e) {
                 e.printStackTrace();
             }
@@ -227,8 +235,11 @@ public class ShoppingState implements Observable {
 
     public void cacheBillingInfo() {
         try {
-            Files.write(Paths.get(getClass().getClassLoader().getResource("cache/billing-info.json").toURI())
+            URI uri = getClass().getClassLoader().getResource("cache/billing-info.json").toURI();
+            FileSystem zipfs = initFileSystem(uri);
+            Files.write(Paths.get(uri)
                     , Collections.singleton(new Gson().toJson(getBillingInformation())));
+            zipfs.close();
         } catch (IOException | URISyntaxException e) {
             e.printStackTrace();
         }
@@ -237,8 +248,11 @@ public class ShoppingState implements Observable {
     public void cachePaymentInfo(PaymentMethod paymentMethod) {
         if (paymentMethod instanceof CreditCard && !getCachedPaymentInfo().contains(paymentMethod)) {
             try {
-                Files.write(Paths.get(getClass().getClassLoader().getResource("cache/payment-info.json").toURI())
+                URI uri = getClass().getClassLoader().getResource("cache/payment-info.json").toURI();
+                FileSystem zipfs = initFileSystem(uri);
+                Files.write(Paths.get(uri)
                         , Collections.singleton(new Gson().toJson(paymentMethod)), StandardOpenOption.APPEND);
+                zipfs.close();
             } catch (IOException | URISyntaxException e) {
                 e.printStackTrace();
             }
@@ -248,8 +262,11 @@ public class ShoppingState implements Observable {
     public void cacheBillingInfo(BillingInformation billingInformation) {
         if(billingInformation.isValid()) {
             try {
-                Files.write(Paths.get(getClass().getClassLoader().getResource("cache/billing-info.json").toURI())
+                URI uri = getClass().getClassLoader().getResource("cache/billing-info.json").toURI();
+                FileSystem zipfs = initFileSystem(uri);
+                Files.write(Paths.get(uri)
                         , Collections.singleton(new Gson().toJson(billingInformation)));
+                zipfs.close();
             } catch (IOException | URISyntaxException e) {
                 e.printStackTrace();
             }
@@ -258,11 +275,15 @@ public class ShoppingState implements Observable {
 
     public List<List<ShoppingItem>> getCachedProducts() {
         try {
-            return Files.readAllLines(Paths.get(getClass().getClassLoader().getResource("cache/shopping-items.json").toURI()))
+            URI uri = getClass().getClassLoader().getResource("cache/shopping-items.json").toURI();
+            FileSystem zipfs = initFileSystem(uri);
+            List<List<ShoppingItem>> lists = Files.readAllLines(Paths.get(uri))
                     .stream()
                     .map(p -> new Gson().fromJson(p, ShoppingItem[].class))
                     .map(Arrays::asList)
                     .collect(Collectors.toList());
+            zipfs.close();
+            return lists;
         } catch (IOException | URISyntaxException e) {
             return Collections.emptyList();
         }
@@ -270,7 +291,10 @@ public class ShoppingState implements Observable {
 
     public BillingInformation getCachedBillingInfo() {
         try {
-            List<String> billingInfo = Files.readAllLines(Paths.get(getClass().getClassLoader().getResource("cache/billing-info.json").toURI()));
+            URI uri = getClass().getClassLoader().getResource("cache/billing-info.json").toURI();
+            FileSystem zipfs = initFileSystem(uri);
+            List<String> billingInfo = Files.readAllLines(Paths.get(uri));
+            zipfs.close();
             if(billingInfo.size() > 0) {
                 return new Gson().fromJson(
                         billingInfo.get(0)
@@ -285,11 +309,15 @@ public class ShoppingState implements Observable {
 
     public List<CreditCard> getCachedPaymentInfo() {
         try {
-            return Files
-                    .readAllLines(Paths.get(getClass().getClassLoader().getResource("cache/payment-info.json").toURI())).stream()
+            URI uri = getClass().getClassLoader().getResource("cache/payment-info.json").toURI();
+            FileSystem zipfs = initFileSystem(uri);
+            List<CreditCard> creditCards = Files
+                    .readAllLines(Paths.get(uri)).stream()
                     .map(c -> new Gson().fromJson(c, CreditCard.class))
                     .filter(Objects::nonNull)
                     .collect(Collectors.toList());
+            zipfs.close();
+            return creditCards;
         } catch (IOException | URISyntaxException e) {
             return Collections.emptyList();
         }
